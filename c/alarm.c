@@ -30,16 +30,6 @@ int* tick_clock(int h, int m, int s){
 }
 
 
-void print_time(int h, int m, int s){
-	char* output = NULL;
-	output = malloc(10 * sizeof *output);
-
-	char hour, min, sec;
-
-	printf("%d:%d:%d\n", h, m, s);
-}
-
-
 void start_timer(char *current_time, char *alarm_time){
 	int timer = 1;
 
@@ -59,7 +49,7 @@ void start_timer(char *current_time, char *alarm_time){
 			timer = 0;
 		}
 		else{
-			printf("Current time: %d:%d:%d\n", c_h, c_m, c_s);
+			printf("Current time: %02d:%02d:%02d\n", c_h, c_m, c_s);
 		}
 
 		int *new_time = tick_clock(c_h, c_m, c_s);
