@@ -14,6 +14,10 @@ int main(){
         if(number_3 > number_2){
             if(number_3 > number_1){
                 max = number_3;
+                mid = number_1;
+            }
+            else{
+                mid = number_3;
             }
         }
         else {
@@ -28,6 +32,10 @@ int main(){
         if(number_3 > number_1){
             if(number_3 > number_2){
                 max = number_3;
+                mid = number_2;
+            }
+            else{
+                mid = number_3
             }
         }
         else {
