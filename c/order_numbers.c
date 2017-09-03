@@ -35,7 +35,7 @@ int main(){
                 mid = number_2;
             }
             else{
-                mid = number_3
+                mid = number_3;
             }
         }
         else {
@@ -44,7 +44,7 @@ int main(){
         }
     }
 
-    printf("%d is the largest number", &max);
-    printf("%d is the second largest number", &mid);
-    printf("%d is the smallest number", &min);
+    printf("%d is the largest number\n", max);
+    printf("%d is the second largest number\n", mid);
+    printf("%d is the smallest number\n", min);
 }
