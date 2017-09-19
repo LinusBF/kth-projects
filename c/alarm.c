@@ -24,7 +24,8 @@ int* tick_clock(int h, int m, int s){
     /*Store the new clock values in an array and return it*/
 	int *ticked_clock = NULL;
 
-	ticked_clock = malloc(10 * sizeof *ticked_clock);	
+    /*Allocate memory to the array*/
+	ticked_clock = malloc(10 * sizeof *ticked_clock);
 
 	ticked_clock[0] = h;
 	ticked_clock[1] = m;
@@ -34,16 +35,20 @@ int* tick_clock(int h, int m, int s){
 }
 
 
-void start_timer(char *current_time, char *alarm_time){
+void start_timer(){
 	int timer = 1;
 
-	/*Split current time into hours, minutes and seconds*/
+	/*Declare variables for current hours, minutes and seconds*/
 	int c_h, c_m, c_s;
-	sscanf(current_time, "%d:%d:%d", &c_h, &c_m, &c_s);
 
-	/*Split alarm time into hours, minutes and seconds*/
+    printf("What's the current time? (Format: HH:MM:SS)\n");
+	scanf("%d:%d:%d", &c_h, &c_m, &c_s);
+
+	/*Declare variables for alarm hours, minutes and seconds*/
 	int a_h, a_m, a_s;
-	sscanf(alarm_time, "%d:%d:%d", &a_h, &a_m, &a_s);
+
+    printf("What's the alarm time? (Format: HH:MM:SS)\n");
+	scanf("%d:%d:%d", &a_h, &a_m, &a_s);
 
 	while (timer){
         /*Pause the program for 1 second*/
@@ -72,19 +77,8 @@ void start_timer(char *current_time, char *alarm_time){
 
 int main()
 {
-	char *current = NULL;
-	char *alarm = NULL;
 
-	current = malloc(10 * sizeof *current);
-	alarm = malloc(10 * sizeof *alarm);
-
-	printf("What's the current time? (Format: HH:MM:SS)\n");
-	scanf("%s", current);
-	
-	printf("What's the alarm time? (Format: HH:MM:SS)\n");
-	scanf("%s", alarm);
-
-	start_timer(current, alarm);
+	start_timer();
 
 	return 0;
 }
