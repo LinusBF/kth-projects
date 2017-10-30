@@ -1,3 +1,5 @@
+package ou1;
+
 import java.util.*; // Scanner, Locale
 
 class Temperaturer {
