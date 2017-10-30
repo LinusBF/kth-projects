@@ -34,13 +34,13 @@ class Temperaturer {
 
         double[] sumT = new double[antalVeckor + 1];
         double[] medelT = new double[antalVeckor + 1];
-        
+
         for (int vecka = 1; vecka <= antalVeckor; vecka++) {
             double veckomax = 0;
             double veckomin = Double.MAX_VALUE;
             double veckosumma = 0;
             for (int matning = 1; matning <= antalMatningarPerVecka; matning++) {
-                double cur_matning = t[vecka][matning]
+                double cur_matning = t[vecka][matning];
 
                 if (cur_matning > veckomax) {
                     veckomax = cur_matning;
@@ -83,11 +83,11 @@ class Temperaturer {
             sumTemp += sumT[vecka];
         }
 
-        System.out.println("HELA PERIODEN " + vecka);
+        System.out.println("HELA PERIODEN");
         System.out.println("Lägsta: " + minTemp);
         System.out.println("Högsta: " + maxTemp);
         System.out.println("Summan: " + sumTemp);
-        System.out.println("Snitt: " + (sumTemp / antalVeckor));
+        System.out.println("Snitt: " + (sumTemp / (antalVeckor * antalMatningarPerVecka)));
         System.out.println("---------------\n\n");
 
     }
