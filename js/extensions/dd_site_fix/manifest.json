@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+
+  "name": "Digital Design site improvement extension",
+  "description": "Adds functionality and style to the course work for KTH course Digital Design.",
+  "version": "0.5",
+
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+
+  "browser_action":{
+    "default_icon": "images/icon48.png"
+  },
+
+  "permissions": [
+    "tabs"
+  ],
+
+  "web_accessible_resources": ["images/*.png"],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazonaws.com/kth/ie1204*"],
+      "js": ["third_party/jquery-3.1.0.js","third_party/bootstrap.min.js","fix_shit_up.js"],
+      "css": ["lit_style.css", "third_party/bootstrap.min.css"],
+      "run_at": "document_end"
+    }
+  ]
+
+}

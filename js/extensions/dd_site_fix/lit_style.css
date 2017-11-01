@@ -1,0 +1,11 @@
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background: white;
+}
+
+.answer-trigger{
+    margin-top: 10px;
+}
