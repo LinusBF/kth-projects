@@ -2,9 +2,7 @@ package ou2;
 
 class Triangel{
     public static double area(double l, double h){
-        double area = (l*h)/2;
-
-        return area;
+        return (l*h)/2;
     }
 
     private static double bisektris(double b, double c, double a){
