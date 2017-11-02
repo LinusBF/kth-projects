@@ -9,3 +9,13 @@
 .answer-trigger{
     margin-top: 10px;
 }
+
+.answer-input{
+    width: 80%;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.answer-tr{
+    text-align: center;
+}
