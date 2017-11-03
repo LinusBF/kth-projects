@@ -16,7 +16,8 @@
   },
 
   "permissions": [
-    "tabs"
+    "tabs",
+    "<all_urls>"
   ],
 
   "web_accessible_resources": ["images/*.png"],

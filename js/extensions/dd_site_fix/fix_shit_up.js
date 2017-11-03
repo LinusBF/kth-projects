@@ -1,11 +1,70 @@
 /**
  * Created by Linus on 2017-11-01.
  */
-function answer_q(ex, q, a) {
-    console.log("Sending answers for " + ex + ", " + q);
-    console.log(a);
 
-    //TODO - Build ajax function to save answers.
+function parse_answer(ex, q, data) {
+    var correct_titles = [];
+    $(data).find('.correct').each(function (index) {
+        correct_titles.push($(this).parent().prevAll('h2')[0].innerHTML.substr(0,1));
+    });
+
+    var field_required = [];
+    var incorrect_titles = [];
+    /*$(data).find('.errorlist').each(function (index) {
+        correct_titles.push($(this).parent().prevAll('h2')[0].innerHTML.substr(0,1));
+    });*/
+}
+
+function send_answers(ex, q, a, nonce) {
+    console.log("Sending answers to " + ex + "," + q + " with nonce: " + nonce);
+    console.log(a);
+    var answer_url = $("a[target='answers']").attr('href') + ex + "/" + q + "/";
+
+    var post_data = {};
+    a.forEach(function (elem) {
+        if(elem[1] != ""){
+            post_data[String.fromCharCode((97 + elem[0])) + "-value"] = (!isNaN(parseInt(elem[1])) ? parseInt(elem[1]): elem[1]);
+        }
+    });
+
+    $.ajax({
+        url:answer_url,
+        type:'POST',
+        data:post_data,
+        success: function(data){
+            parse_answer(ex, q, data);
+        }
+    });
+}
+
+function get_correct(data, ex, q, a){
+    var correct_titles = [];
+    $(data).find('.correct').each(function (index) {
+        correct_titles.push($(this).parent().prevAll('h2')[0].innerHTML.substr(0,1));
+    });
+
+    a.forEach(function (elem, index) {
+        if(correct_titles.indexOf(String.fromCharCode((97 + elem[0]))) != -1){
+            a.splice(elem[0], 1);
+        }
+    });
+
+    var nonce = $(data).find("input[name='csrfmiddlewaretoken']").attr('value');
+
+    send_answers(ex, q, a, nonce);
+}
+
+function answer_q(ex, q, a) {
+
+    var answer_url = $("a[target='answers']").attr('href') + ex + "/" + q + "/";
+
+    $.ajax({
+        url:answer_url,
+        type:'GET',
+        success: function(data){
+            get_correct(data, ex, q, a);
+        }
+    });
 }
 
 
@@ -18,7 +77,10 @@ window.onload = function () {
         $(this).addClass("btn btn-secondary");
     });
 
-    var bundle = $("a[target='answers']").parent();
+    var url_link = $("a[target='answers']");
+    url_link.attr('href', url_link.attr('href').replace("http://", "https://"));
+
+    var bundle = url_link.parent();
     bundle.addClass("header page-header");
 
     $("table[border='2']").each(function (index, element) {
