@@ -76,9 +76,12 @@ function get_correct(data, ex, q, a, callback){
         correct_titles.push($(this).parent().prevAll('h2')[0].innerHTML.substr(0,1));
     });
 
+    var removed = 0;
     a.forEach(function (elem, index) {
-        if(correct_titles.indexOf(String.fromCharCode((97 + elem[0]))) != -1){
-            a.splice(elem[0], 1);
+        var letter = String.fromCharCode((97 + elem[0]));
+        if(correct_titles.indexOf(letter) != -1){
+            a.splice(elem[0] - removed, 1);
+            removed++;
         }
     });
 
@@ -217,7 +220,7 @@ window.onload = function () {
         var q = ex_q.split(",")[1];
 
         var tr_answers = elem.siblings("table[border='2'], table[border='3']").children("tbody").children(".answer-tr");
-        var td_answers = $(tr_answers).children("td");
+        var td_answers = $(tr_answers).children();
         var answers = [];
 
         $(td_answers).each(function (index, td_element) {
