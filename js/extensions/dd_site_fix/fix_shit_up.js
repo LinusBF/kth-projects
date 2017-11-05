@@ -13,6 +13,8 @@ function update_fields(ex, q, correct, incorrect, not_answered){
     tbody.children("tr[valign='TOP']").children().each(function (index, elem) {
         var letter = $(elem).children("b")[0].innerHTML.substr(0, 1);
 
+        $(elem).removeClass();
+
         if (correct.indexOf(letter) != -1){
             $(elem).addClass("correct_answer bg-success");
             $(tbody.children(".answer-tr").children()[index]).children().prop("disabled", true);
