@@ -55,7 +55,7 @@ function send_answers(ex, q, a, nonce) {
     var post_data = {};
     a.forEach(function (elem) {
         if(elem[1] != ""){
-            post_data[String.fromCharCode((97 + elem[0])) + "-value"] = (!isNaN(parseInt(elem[1])) ? parseInt(elem[1]): elem[1]);
+            post_data[String.fromCharCode((97 + elem[0])) + "-value"] = (!isNaN(parseFloat(elem[1])) ? parseFloat(elem[1]): elem[1]);
         }
     });
     post_data['csrfmiddlewaretoken'] = nonce;
