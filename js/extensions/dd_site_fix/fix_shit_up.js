@@ -93,7 +93,7 @@ function get_correct(data, ex, q, a, callback){
 function answer_q(ex, q, a, callback) {
 
     var answer_url = $("a[target='answers']").attr('href') + ex + "/" + q + "/";
-
+    console.log(a.toString());
     $.ajax({
         url:answer_url,
         type:'GET',
@@ -219,8 +219,8 @@ window.onload = function () {
         var ex = ex_q.split(",")[0];
         var q = ex_q.split(",")[1];
 
-        var tr_answers = elem.siblings("table[border='2'], table[border='3']").children("tbody").children(".answer-tr");
-        var td_answers = $(tr_answers).children();
+        var tr_answers = elem.siblings("table").children("tbody").children(".answer-tr");
+        var td_answers = $(tr_answers).children("td");
         var answers = [];
 
         $(td_answers).each(function (index, td_element) {
