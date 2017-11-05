@@ -93,7 +93,6 @@ function get_correct(data, ex, q, a, callback){
 function answer_q(ex, q, a, callback) {
 
     var answer_url = $("a[target='answers']").attr('href') + ex + "/" + q + "/";
-    console.log(a.toString());
     $.ajax({
         url:answer_url,
         type:'GET',
