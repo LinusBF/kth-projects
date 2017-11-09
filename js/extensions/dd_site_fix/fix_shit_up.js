@@ -223,7 +223,9 @@ window.onload = function () {
         var answers = [];
 
         $(td_answers).each(function (index, td_element) {
-            answers.push([index, $(td_element).children(".answer-input").val()]);
+            var tr_element = tr_answers.prevAll("tr[valign='TOP']").children("th, td")[index];
+            var char_index = $(tr_element).children("b").text().substr(0, 1).charCodeAt(0) - 97;
+            answers.push([char_index, $(td_element).children(".answer-input").val()]);
         });
         answer_q(ex, q, answers, send_answers);
     });
