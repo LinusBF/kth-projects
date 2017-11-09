@@ -105,6 +105,9 @@ function answer_q(ex, q, a, callback) {
 function fix_table2(index, element, exercise, question){
     var tr_questions = $(element).children("tbody").children("tr")[0];
     var tr_answers = $(element).children("tbody").children("tr")[1];
+    if($(tr_questions).attr('valign') != "TOP"){
+        $(tr_questions).attr('valign', 'TOP');
+    }
     $(tr_answers).addClass("answer-tr");
 
     var td_answers = $(tr_answers).children("td");
@@ -114,7 +117,7 @@ function fix_table2(index, element, exercise, question){
             "class='answer-input' type='text'>";
     });
 
-    var td_questions = $(tr_questions).children("td");
+    var td_questions = $(tr_questions).children("td, th");
 
     $(td_questions).each(function (index, td_element) {
         if($(td_element)[0].innerHTML.indexOf("<b>") == -1){
