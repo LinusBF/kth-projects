@@ -1,0 +1,42 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\kth-projects\model-sim
+Ecodelock
+Z1 w1512302228
+Z2 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z5 dE:\kth-projects\model-sim
+Z6 8E:\kth-projects\quartus\codelock-four.vhd
+Z7 FE:\kth-projects\quartus\codelock-four.vhd
+l0
+L5
+Vgf6BQ1KgS[cEc=KN`fD:C0
+!s100 khPH[1G0IeT7LNzL3_N=n0
+Z8 OV;C;10.1d;51
+32
+!i10b 1
+Z9 !s108 1512302349.817000
+Z10 !s90 -reportprogress|300|-work|work2|-2002|-explicit|E:\kth-projects\quartus\codelock-four.vhd|
+Z11 !s107 E:\kth-projects\quartus\codelock-four.vhd|
+Z12 o-work work2 -2002 -explicit -O0
+Z13 tExplicit 1
+Abehavior
+R2
+R3
+R4
+Z14 DEx4 work 8 codelock 0 22 gf6BQ1KgS[cEc=KN`fD:C0
+l17
+L13
+VQeXVlFn:6WgD3`[ceT5501
+!s100 `B8eEbSSbzI24kIU4=]9g2
+R8
+32
+!i10b 1
+R9
+R10
+R11
+R12
+R13

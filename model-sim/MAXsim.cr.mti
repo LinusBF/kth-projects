@@ -1,0 +1,29 @@
+E:/kth-projects/quartus/codelock-four.vhd {1 {vcom -work work -2002 -explicit E:/kth-projects/quartus/codelock-four.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Compiling entity codelock
+-- Compiling architecture behavior of codelock
+
+} {} {}} E:/kth-projects/quartus/codelock.vhd {1 {vcom -work work -2002 -explicit E:/kth-projects/quartus/codelock.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Compiling entity codelock
+-- Compiling architecture behavior of codelock
+
+} {} {}} E:/kth-projects/quartus/tb_lockmall.vhd {1 {vcom -work work -2002 -explicit E:/kth-projects/quartus/tb_lockmall.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_codelock
+-- Compiling architecture testbench of tb_codelock
+
+} {} {}}
