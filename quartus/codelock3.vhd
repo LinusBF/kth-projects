@@ -2,15 +2,15 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.std_logic_arith.all;
 
-entity codelock2 is
+entity codelock3 is
    port( clk:      in  std_logic;
            K:      in  std_logic_vector(1 to 3);
            R:      in  std_logic_vector(1 to 4);
            q:      out std_logic_vector(4 downto 0);
            UNLOCK: out std_logic );
-end codelock2;
+end codelock3;
 
-architecture behavior of codelock2 is
+architecture behavior of codelock3 is
 subtype state_type is integer range 0 to 31;
 signal state, nextstate: state_type;
   

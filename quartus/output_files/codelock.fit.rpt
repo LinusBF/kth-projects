@@ -1,5 +1,5 @@
 Fitter report for codelock
-Sun Dec 03 10:47:23 2017
+Mon Dec 04 09:26:37 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -24,9 +24,10 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
  16. Non-Global High Fan-Out Signals
  17. Other Routing Usage Summary
  18. LAB Macrocells
- 19. Logic Cell Interconnection
- 20. Fitter Device Options
- 21. Fitter Messages
+ 19. Shareable Expander
+ 20. Logic Cell Interconnection
+ 21. Fitter Device Options
+ 22. Fitter Messages
 
 
 
@@ -52,14 +53,14 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Fitter Summary                                                         ;
 +---------------------------+--------------------------------------------+
-; Fitter Status             ; Successful - Sun Dec 03 10:47:23 2017      ;
+; Fitter Status             ; Successful - Mon Dec 04 09:26:37 2017      ;
 ; Quartus II 64-Bit Version ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name             ; codelock                                   ;
 ; Top-level Entity Name     ; codelock                                   ;
 ; Family                    ; MAX3000A                                   ;
 ; Device                    ; EPM3032ALC44-10                            ;
 ; Timing Models             ; Final                                      ;
-; Total macrocells          ; 6 / 32 ( 19 % )                            ;
+; Total macrocells          ; 9 / 32 ( 28 % )                            ;
 ; Total pins                ; 18 / 34 ( 53 % )                           ;
 +---------------------------+--------------------------------------------+
 
@@ -99,7 +100,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.pin.
+The pin-out file can be found in C:/Projects/kth-projects/quartus/output_files/codelock.pin.
 
 
 +-------------------------------------------------+
@@ -107,21 +108,21 @@ The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.p
 +------------------------------+------------------+
 ; Resource                     ; Usage            ;
 +------------------------------+------------------+
-; Logic cells                  ; 6 / 32 ( 19 % )  ;
+; Logic cells                  ; 9 / 32 ( 28 % )  ;
 ; Registers                    ; 5 / 32 ( 16 % )  ;
-; Number of pterms used        ; 14               ;
+; Number of pterms used        ; 37               ;
 ; I/O pins                     ; 18 / 34 ( 53 % ) ;
 ;     -- Clock pins            ; 1 / 2 ( 50 % )   ;
-;     -- Dedicated input pins  ; 1 / 2 ( 50 % )   ;
+;     -- Dedicated input pins  ; 0 / 2 ( 0 % )    ;
 ;                              ;                  ;
 ; Global signals               ; 1                ;
-; Shareable expanders          ; 0 / 32 ( 0 % )   ;
+; Shareable expanders          ; 18 / 32 ( 56 % ) ;
 ; Parallel expanders           ; 0 / 30 ( 0 % )   ;
-; Cells using turbo bit        ; 6 / 32 ( 19 % )  ;
-; Maximum fan-out              ; 7                ;
-; Highest non-global fan-out   ; 7                ;
-; Total fan-out                ; 48               ;
-; Average fan-out              ; 2.00             ;
+; Cells using turbo bit        ; 9 / 32 ( 28 % )  ;
+; Maximum fan-out              ; 19               ;
+; Highest non-global fan-out   ; 19               ;
+; Total fan-out                ; 166              ;
+; Average fan-out              ; 3.69             ;
 +------------------------------+------------------+
 
 
@@ -130,14 +131,14 @@ The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.p
 +------+-------+----------+-----+-----------------------+--------------------+--------+--------------+----------------------+
 ; Name ; Pin # ; I/O Bank ; LAB ; Combinational Fan-Out ; Registered Fan-Out ; Global ; I/O Standard ; Location assigned by ;
 +------+-------+----------+-----+-----------------------+--------------------+--------+--------------+----------------------+
-; K[1] ; 20    ; --       ; 1   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; K[2] ; 21    ; --       ; 1   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; K[3] ; 24    ; --       ; 2   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; R[1] ; 44    ; --       ; --  ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; R[2] ; 33    ; --       ; 2   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; R[3] ; 16    ; --       ; 1   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; R[4] ; 28    ; --       ; 2   ; 2                     ; 0                  ; no     ; 3.3-V LVTTL  ; Fitter               ;
-; clk  ; 43    ; --       ; --  ; 5                     ; 0                  ; yes    ; 3.3-V LVTTL  ; Fitter               ;
+; K[1] ; 20    ; --       ; 1   ; 8                     ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; K[2] ; 19    ; --       ; 1   ; 9                     ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; K[3] ; 18    ; --       ; 1   ; 9                     ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; R[1] ; 25    ; --       ; 2   ; 8                     ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; R[2] ; 26    ; --       ; 2   ; 10                    ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; R[3] ; 27    ; --       ; 2   ; 8                     ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; R[4] ; 28    ; --       ; 2   ; 10                    ; 0                  ; no     ; 3.3-V LVTTL  ; User                 ;
+; clk  ; 43    ; --       ; --  ; 5                     ; 0                  ; yes    ; 3.3-V LVTTL  ; User                 ;
 +------+-------+----------+-----+-----------------------+--------------------+--------+--------------+----------------------+
 
 
@@ -146,12 +147,12 @@ The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.p
 +--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
 ; Name   ; Pin # ; I/O Bank ; LAB ; Output Register ; Slow Slew Rate ; Open Drain ; TRI Primitive ; I/O Standard ; Location assigned by ; Load  ; Output Enable Source ; Output Enable Group ;
 +--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
-; UNLOCK ; 9     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
-; q[0]   ; 11    ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
-; q[1]   ; 4     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
-; q[2]   ; 5     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
-; q[3]   ; 6     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
-; q[4]   ; 8     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; Fitter               ; 10 pF ; -                    ; -                   ;
+; UNLOCK ; 14    ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
+; q[0]   ; 4     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
+; q[1]   ; 5     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
+; q[2]   ; 6     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
+; q[3]   ; 8     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
+; q[4]   ; 9     ; --       ; 1   ; no              ; no             ; no         ; no            ; 3.3-V LVTTL  ; User                 ; 10 pF ; -                    ; -                   ;
 +--------+-------+----------+-----+-----------------+----------------+------------+---------------+--------------+----------------------+-------+----------------------+---------------------+
 
 
@@ -163,36 +164,36 @@ The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.p
 ; 1        ; 0          ; --       ; GND+           ;        ;              ;         ;                 ;
 ; 2        ; 1          ; --       ; GND+           ;        ;              ;         ;                 ;
 ; 3        ; 2          ; --       ; VCCINT         ; power  ;              ; 3.3V    ;                 ;
-; 4        ; 3          ; --       ; q[1]           ; output ; 3.3-V LVTTL  ;         ; N               ;
-; 5        ; 4          ; --       ; q[2]           ; output ; 3.3-V LVTTL  ;         ; N               ;
-; 6        ; 5          ; --       ; q[3]           ; output ; 3.3-V LVTTL  ;         ; N               ;
+; 4        ; 3          ; --       ; q[0]           ; output ; 3.3-V LVTTL  ;         ; Y               ;
+; 5        ; 4          ; --       ; q[1]           ; output ; 3.3-V LVTTL  ;         ; Y               ;
+; 6        ; 5          ; --       ; q[2]           ; output ; 3.3-V LVTTL  ;         ; Y               ;
 ; 7        ; 6          ; --       ; TDI            ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 8        ; 7          ; --       ; q[4]           ; output ; 3.3-V LVTTL  ;         ; N               ;
-; 9        ; 8          ; --       ; UNLOCK         ; output ; 3.3-V LVTTL  ;         ; N               ;
+; 8        ; 7          ; --       ; q[3]           ; output ; 3.3-V LVTTL  ;         ; Y               ;
+; 9        ; 8          ; --       ; q[4]           ; output ; 3.3-V LVTTL  ;         ; Y               ;
 ; 10       ; 9          ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 11       ; 10         ; --       ; q[0]           ; output ; 3.3-V LVTTL  ;         ; N               ;
+; 11       ; 10         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 12       ; 11         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 13       ; 12         ; --       ; TMS            ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 14       ; 13         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 14       ; 13         ; --       ; UNLOCK         ; output ; 3.3-V LVTTL  ;         ; Y               ;
 ; 15       ; 14         ; --       ; VCCIO          ; power  ;              ; 3.3V    ;                 ;
-; 16       ; 15         ; --       ; R[3]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
+; 16       ; 15         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 17       ; 16         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 18       ; 17         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 19       ; 18         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 20       ; 19         ; --       ; K[1]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 21       ; 20         ; --       ; K[2]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
+; 18       ; 17         ; --       ; K[3]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 19       ; 18         ; --       ; K[2]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 20       ; 19         ; --       ; K[1]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 21       ; 20         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 22       ; 21         ; --       ; GND            ; gnd    ;              ;         ;                 ;
 ; 23       ; 22         ; --       ; VCCINT         ; power  ;              ; 3.3V    ;                 ;
-; 24       ; 23         ; --       ; K[3]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 25       ; 24         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 26       ; 25         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 27       ; 26         ; --       ; RESERVED       ;        ;              ;         ;                 ;
-; 28       ; 27         ; --       ; R[4]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
+; 24       ; 23         ; --       ; RESERVED       ;        ;              ;         ;                 ;
+; 25       ; 24         ; --       ; R[1]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 26       ; 25         ; --       ; R[2]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 27       ; 26         ; --       ; R[3]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 28       ; 27         ; --       ; R[4]           ; input  ; 3.3-V LVTTL  ;         ; Y               ;
 ; 29       ; 28         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 30       ; 29         ; --       ; GND            ; gnd    ;              ;         ;                 ;
 ; 31       ; 30         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 32       ; 31         ; --       ; TCK            ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 33       ; 32         ; --       ; R[2]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
+; 33       ; 32         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 34       ; 33         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 35       ; 34         ; --       ; VCCIO          ; power  ;              ; 3.3V    ;                 ;
 ; 36       ; 35         ; --       ; GND            ; gnd    ;              ;         ;                 ;
@@ -202,8 +203,8 @@ The pin-out file can be found in E:/kth-projects/quartus/output_files/codelock.p
 ; 40       ; 39         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 41       ; 40         ; --       ; RESERVED       ;        ;              ;         ;                 ;
 ; 42       ; 41         ; --       ; GND            ; gnd    ;              ;         ;                 ;
-; 43       ; 42         ; --       ; clk            ; input  ; 3.3-V LVTTL  ;         ; N               ;
-; 44       ; 43         ; --       ; R[1]           ; input  ; 3.3-V LVTTL  ;         ; N               ;
+; 43       ; 42         ; --       ; clk            ; input  ; 3.3-V LVTTL  ;         ; Y               ;
+; 44       ; 43         ; --       ; GND+           ;        ;              ;         ;                 ;
 +----------+------------+----------+----------------+--------+--------------+---------+-----------------+
 Note: Pin directions (input, output or bidir) are based on device operating in user mode.
 
@@ -213,7 +214,7 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +--------------+------------+----------------------+-------------------+-------------------+-------+
 ; I/O Standard ; Input Vref ; Dedicated Input Pins ; Pins in I/O Bank1 ; Pins in I/O Bank2 ; Total ;
 +--------------+------------+----------------------+-------------------+-------------------+-------+
-; 3.3-V LVTTL  ; -          ; 2                    ; 0                 ; 0                 ; 2     ;
+; 3.3-V LVTTL  ; -          ; 1                    ; 0                 ; 0                 ; 1     ;
 +--------------+------------+----------------------+-------------------+-------------------+-------+
 
 
@@ -222,7 +223,6 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +------+-------+-------+-------+--------------+------------+---------+
 ; Name ; Pin # ; Type  ; VCCIO ; I/O Standard ; Input Vref ; Current ;
 +------+-------+-------+-------+--------------+------------+---------+
-; R[1] ; 44    ; Input ; --    ; 3.3-V LVTTL  ; -          ; 0 mA    ;
 ; clk  ; 43    ; Input ; --    ; 3.3-V LVTTL  ; -          ; 0 mA    ;
 +------+-------+-------+-------+--------------+------------+---------+
 
@@ -245,7 +245,7 @@ Note: User assignments will override these defaults. The user specified values a
 +----------------------------+------------+------+---------------------+--------------+
 ; Compilation Hierarchy Node ; Macrocells ; Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+------------+------+---------------------+--------------+
-; |codelock                  ; 6          ; 18   ; |codelock           ; work         ;
+; |codelock                  ; 9          ; 18   ; |codelock           ; work         ;
 +----------------------------+------------+------+---------------------+--------------+
 
 
@@ -269,23 +269,44 @@ Note: User assignments will override these defaults. The user specified values a
 
 +---------------------------------+
 ; Non-Global High Fan-Out Signals ;
-+-------------+-------------------+
-; Name        ; Fan-Out           ;
-+-------------+-------------------+
-; state[1]    ; 7                 ;
-; state[0]    ; 6                 ;
-; state[2]    ; 6                 ;
-; state[3]    ; 5                 ;
-; state[4]    ; 4                 ;
-; R[1]        ; 2                 ;
-; R[2]        ; 2                 ;
-; R[3]        ; 2                 ;
-; R[4]        ; 2                 ;
-; K[1]        ; 2                 ;
-; K[2]        ; 2                 ;
-; K[3]        ; 2                 ;
-; LessThan3~3 ; 1                 ;
-+-------------+-------------------+
++-------------------+-------------+
+; Name              ; Fan-Out     ;
++-------------------+-------------+
+; state[2]~0        ; 19          ;
+; state[1]          ; 18          ;
+; state[0]          ; 14          ;
+; state[3]          ; 13          ;
+; state[4]          ; 12          ;
+; R[2]              ; 10          ;
+; R[4]              ; 10          ;
+; K[2]              ; 9           ;
+; K[3]              ; 9           ;
+; R[1]              ; 8           ;
+; R[3]              ; 8           ;
+; K[1]              ; 8           ;
+; Selector2~27      ; 2           ;
+; Selector2~13bal   ; 1           ;
+; Selector1~12sexp5 ; 1           ;
+; Selector1~12sexp4 ; 1           ;
+; Selector1~12sexp3 ; 1           ;
+; Selector1~12sexp2 ; 1           ;
+; Selector1~12sexp1 ; 1           ;
+; Equal9~6          ; 1           ;
+; state[2]          ; 1           ;
+; Selector1~18      ; 1           ;
+; Selector1~17      ; 1           ;
+; Selector1~16      ; 1           ;
+; Selector1~15      ; 1           ;
+; Selector1~14      ; 1           ;
+; Selector1~13      ; 1           ;
+; Selector2~19      ; 1           ;
+; Selector2~18      ; 1           ;
+; Selector2~17      ; 1           ;
+; Selector2~16      ; 1           ;
+; Selector2~15      ; 1           ;
+; Selector2~12      ; 1           ;
+; Selector2~11      ; 1           ;
++-------------------+-------------+
 
 
 +------------------------------------------------+
@@ -294,37 +315,60 @@ Note: User assignments will override these defaults. The user specified values a
 ; Other Routing Resource Type ; Usage            ;
 +-----------------------------+------------------+
 ; Output enables              ; 0 / 6 ( 0 % )    ;
-; PIA buffers                 ; 12 / 72 ( 17 % ) ;
+; PIA buffers                 ; 27 / 72 ( 38 % ) ;
 +-----------------------------+------------------+
 
 
 +----------------------------------------------------------------------+
 ; LAB Macrocells                                                       ;
 +----------------------------------------+-----------------------------+
-; Number of Macrocells  (Average = 3.00) ; Number of LABs  (Total = 1) ;
+; Number of Macrocells  (Average = 4.50) ; Number of LABs  (Total = 2) ;
 +----------------------------------------+-----------------------------+
-; 0                                      ; 1                           ;
+; 0                                      ; 0                           ;
 ; 1                                      ; 0                           ;
 ; 2                                      ; 0                           ;
-; 3                                      ; 0                           ;
+; 3                                      ; 1                           ;
 ; 4                                      ; 0                           ;
 ; 5                                      ; 0                           ;
 ; 6                                      ; 1                           ;
 +----------------------------------------+-----------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Logic Cell Interconnection                                                                                                                                                               ;
-+-----+------------+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-; LAB ; Logic Cell ; Input                                                                                           ; Output                                                              ;
-+-----+------------+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-;  A  ; LC1        ; clk, state[0], state[1], state[4], state[3], state[2], K[3], R[4], K[2], K[1], R[3], R[2], R[1] ; state[1], q[1], state[2], state[3], state[4], LessThan3~3, state[0] ;
-;  A  ; LC2        ; clk, state[1], state[0]                                                                         ; state[1], q[2], state[3], state[4], LessThan3~3, state[0]           ;
-;  A  ; LC3        ; clk, state[2], state[1], state[0]                                                               ; state[1], q[3], state[4], LessThan3~3, state[0]                     ;
-;  A  ; LC5        ; clk, state[3], state[2], state[1], state[0]                                                     ; state[1], q[4], LessThan3~3, state[0]                               ;
-;  A  ; LC6        ; state[4], state[3], state[2], state[1]                                                          ; UNLOCK                                                              ;
-;  A  ; LC7        ; clk, state[0], state[4], state[3], state[2], state[1], K[3], R[4], K[2], K[1], R[3], R[2], R[1] ; state[1], state[2], state[3], state[4], state[0], q[0]              ;
-+-----+------------+-------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Shareable Expander                                                            ;
++-------------------------------------------------+-----------------------------+
+; Number of shareable expanders  (Average = 9.00) ; Number of LABs  (Total = 2) ;
++-------------------------------------------------+-----------------------------+
+; 0                                               ; 0                           ;
+; 1                                               ; 0                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 0                           ;
+; 4                                               ; 0                           ;
+; 5                                               ; 0                           ;
+; 6                                               ; 0                           ;
+; 7                                               ; 1                           ;
+; 8                                               ; 0                           ;
+; 9                                               ; 0                           ;
+; 10                                              ; 0                           ;
+; 11                                              ; 1                           ;
++-------------------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Logic Cell Interconnection                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ;
++-----+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; LAB ; Logic Cell ; Input                                                                                                                                                                                    ; Output                                                                                                                                                                                                                                                                        ;
++-----+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+;  A  ; LC2        ; clk, Selector2~15, Selector2~16, Selector2~17, Selector2~18, Selector2~19, Selector2~11, state[4], state[3], R[4], Selector2~12, R[2], Selector2~13bal, Selector2~27, state[0], state[1] ; Selector2~11, Selector2~12, Selector2~15, Selector2~16, Selector2~19, state[1], q[1], Selector1~13, Selector1~14, Selector1~17, Selector1~18, state[3], state[4], state[0], Selector1~12sexp1, Selector1~12sexp2, Selector1~12sexp3, Selector1~12sexp5                        ;
+;  A  ; LC5        ; clk, state[4], state[1], state[0], state[2]~0, R[4], K[3], R[2], K[1], R[1], K[2], R[3], state[3]                                                                                        ; Selector2~17, Selector2~18, state[1], Selector1~14, Selector1~16, Selector1~18, state[3], q[3], state[4], Equal9~6, state[0], Selector1~12sexp5, Selector2~27                                                                                                                 ;
+;  A  ; LC6        ; clk, state[3], state[2]~0, state[1], state[0]                                                                                                                                            ; Selector2~17, Selector2~18, state[1], Selector1~13, Selector1~15, Selector1~17, state[3], q[4], Equal9~6, state[0], Selector1~12sexp5, Selector2~27                                                                                                                           ;
+;  A  ; LC10       ; state[4], state[3]                                                                                                                                                                       ; UNLOCK                                                                                                                                                                                                                                                                        ;
+;  A  ; LC1        ; clk, state[4], state[3], state[2]~0, state[1], R[4], R[2], K[3], K[2], R[3], K[1], R[1], Selector2~27, state[0]                                                                          ; Selector2~15, Selector2~16, Selector2~19, state[1], Selector1~15, Selector1~16, Selector1~17, Selector1~18, state[3], state[4], state[0], q[0], Selector1~12sexp1, Selector1~12sexp4                                                                                          ;
+;  A  ; LC3        ; state[2]                                                                                                                                                                                 ; Selector2~11, Selector2~12, Selector2~15, Selector2~16, Selector1~13, Selector1~14, Selector1~15, Selector1~16, Selector1~17, Selector1~18, q[2], state[3], state[4], state[0], Selector1~12sexp1, Selector1~12sexp2, Selector1~12sexp3, Selector1~12sexp4, Selector1~12sexp5 ;
+;  B  ; LC25       ; clk, Selector1~13, Selector1~14, Selector1~15, Selector1~16, Selector1~17, Selector1~18, Selector1~12sexp1, Selector1~12sexp2, Selector1~12sexp3, Selector1~12sexp4, Selector1~12sexp5   ; state[2]~0                                                                                                                                                                                                                                                                    ;
+;  B  ; LC30       ; R[3], K[1], R[1]                                                                                                                                                                         ; state[1]                                                                                                                                                                                                                                                                      ;
+;  B  ; LC31       ; state[4], state[3]                                                                                                                                                                       ; state[1], state[0]                                                                                                                                                                                                                                                            ;
++-----+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------+
@@ -347,10 +391,11 @@ Note: User assignments will override these defaults. The user specified values a
 +-----------------+
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (119006): Selected device EPM3032ALC44-10 for design "codelock"
-Info: Quartus II 64-Bit Fitter was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 519 megabytes
-    Info: Processing ended: Sun Dec 03 10:47:23 2017
-    Info: Elapsed time: 00:00:01
+Warning (163076): Macrocell buffer inserted after node "state[2]"
+Info: Quartus II 64-Bit Fitter was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 578 megabytes
+    Info: Processing ended: Mon Dec 04 09:26:37 2017
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

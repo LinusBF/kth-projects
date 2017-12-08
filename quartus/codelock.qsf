@@ -52,3 +52,19 @@ set_global_assignment -name VHDL_FILE codelock.vhd
 set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name VHDL_FILE tb_lockmall.vhd
 set_global_assignment -name VHDL_FILE "codelock-four.vhd"
+set_location_assignment PIN_20 -to K[1]
+set_location_assignment PIN_19 -to K[2]
+set_location_assignment PIN_18 -to K[3]
+set_location_assignment PIN_25 -to R[1]
+set_location_assignment PIN_26 -to R[2]
+set_location_assignment PIN_27 -to R[3]
+set_location_assignment PIN_28 -to R[4]
+set_location_assignment PIN_14 -to UNLOCK
+set_location_assignment PIN_43 -to clk
+set_location_assignment PIN_4 -to q[0]
+set_location_assignment PIN_5 -to q[1]
+set_location_assignment PIN_6 -to q[2]
+set_location_assignment PIN_8 -to q[3]
+set_location_assignment PIN_9 -to q[4]
+set_global_assignment -name VHDL_FILE codelock2.vhd
+set_global_assignment -name VHDL_FILE codelock3.vhd

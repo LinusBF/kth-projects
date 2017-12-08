@@ -1,5 +1,5 @@
 Flow report for codelock
-Sun Dec 03 10:47:29 2017
+Mon Dec 04 09:34:44 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -40,15 +40,13 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; Flow Summary                                                           ;
 +---------------------------+--------------------------------------------+
-; Flow Status               ; Successful - Sun Dec 03 10:47:29 2017      ;
+; Flow Status               ; Flow Failed - Mon Dec 04 09:34:44 2017     ;
 ; Quartus II 64-Bit Version ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name             ; codelock                                   ;
 ; Top-level Entity Name     ; codelock                                   ;
 ; Family                    ; MAX3000A                                   ;
 ; Device                    ; EPM3032ALC44-10                            ;
 ; Timing Models             ; Final                                      ;
-; Total macrocells          ; 6 / 32 ( 19 % )                            ;
-; Total pins                ; 18 / 34 ( 53 % )                           ;
 +---------------------------+--------------------------------------------+
 
 
@@ -57,7 +55,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/03/2017 10:47:21 ;
+; Start date & time ; 12/04/2017 09:34:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; codelock            ;
 +-------------------+---------------------+
@@ -68,7 +66,7 @@ applicable agreement for further details.
 +--------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name          ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID    ; 171921345840983.151229444130576 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID    ; 172309003071096.151237648305492 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT   ; Vhdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL      ; ModelSim-Altera (VHDL)          ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP   ; 85                              ; --            ; --          ; --             ;
@@ -77,41 +75,29 @@ applicable agreement for further details.
 +--------------------------+---------------------------------+---------------+-------------+----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                             ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 528 MB              ; 00:00:01                           ;
-; Fitter                    ; 00:00:01     ; 1.0                     ; 519 MB              ; 00:00:01                           ;
-; Assembler                 ; 00:00:00     ; 1.0                     ; 411 MB              ; 00:00:00                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 405 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 383 MB              ; 00:00:00                           ;
-; Total                     ; 00:00:03     ; --                      ; --                  ; 00:00:03                           ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 492 MB              ; 00:00:01                           ;
+; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; DESKTOP-N3SDRU0  ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; DESKTOP-N3SDRU0  ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; DESKTOP-N3SDRU0  ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; DESKTOP-N3SDRU0  ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; DESKTOP-N3SDRU0  ; Windows 7 ; 6.2        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-6FGN4DO  ; Windows 7 ; 6.2        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off codelock -c codelock
-quartus_fit --read_settings_files=off --write_settings_files=off codelock -c codelock
-quartus_asm --read_settings_files=off --write_settings_files=off codelock -c codelock
-quartus_sta codelock -c codelock
-quartus_eda --read_settings_files=off --write_settings_files=off codelock -c codelock
 
 
 
