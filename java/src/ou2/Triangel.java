@@ -5,18 +5,18 @@ class Triangel{
         return (l*h)/2;
     }
 
-    public static double bisektrisA(double b, double c, double a){
-        double p = 2 * b * c * Math.cos (a / 2);
+    public static double bisektrisA(double b, double c, double alpha){
+        double p = 2 * b * c * Math.cos (alpha / 2);
         return p / (b + c);
     }
 
-    public static double bisektrisB(double a, double c, double b){
-        double p = 2 * a * c * Math.cos (b / 2);
+    public static double bisektrisB(double a, double c, double beta){
+        double p = 2 * a * c * Math.cos (beta / 2);
         return p / (a + c);
     }
 
-    public static double bisektrisC(double a, double b, double c){
-        double p = 2 * a * b * Math.cos (c / 2);
+    public static double bisektrisC(double a, double b, double charlie){
+        double p = 2 * a * b * Math.cos (charlie / 2);
         return p / (a + b);
     }
 

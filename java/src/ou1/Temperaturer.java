@@ -38,7 +38,7 @@ class Temperaturer {
         double[] medelT = new double[antalVeckor + 1];
 
         for (int vecka = 1; vecka <= antalVeckor; vecka++) {
-            double veckomax = 0;
+            double veckomax = Double.MIN_VALUE;
             double veckomin = Double.MAX_VALUE;
             double veckosumma = 0;
             for (int matning = 1; matning <= antalMatningarPerVecka; matning++) {
