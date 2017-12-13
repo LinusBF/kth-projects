@@ -63,7 +63,24 @@ public class Chessboard {
     }
 
     public String toString () {
-        return "";
+        char row = 0;
+        byte column = 0;
+        String output = "CHESS:\n";
+        for (int r = 0; r < NUMBER_OF_ROWS; r++) {
+            row = (char) (FIRST_ROW + r);
+            column = FIRST_COLUMN;
+            output += row + "  ";
+            for (int c = 0; c < NUMBER_OF_COLUMNS; c++) {
+                if (r == 0){
+                    output += column + "  ";
+                } else{
+                    output += this.fields[r][c].toString() + "  ";
+                }
+            }
+            output += "\n";
+        }
+
+        return output;
     }
 
     public boolean isValidField (char row, byte column) {
@@ -75,7 +92,7 @@ public class Chessboard {
             return false;
         }
 
-        if (this.fields[row][column].marked){
+        if (this.fields[row][column].piece != null){
             return false;
         }
 

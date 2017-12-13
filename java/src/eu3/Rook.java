@@ -12,51 +12,47 @@ public class Rook extends Chesspiece {
 
     @Override
     public void markReachableFields() {
-        byte col = (byte) (this.column + 1);
-
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(this.row, col)) {
-            int r = this.row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark();
-
-            col++;
-        }
-
-        col = (byte) (this.column - 1);
-
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(this.row, col)) {
-            int r = this.row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark();
-
-            col--;
-        }
+        genMark(true);
     }
 
     @Override
     public void unmarkReachableFields() {
+        genMark(false);
+    }
+
+    private void genMark(boolean mark){
         byte col = (byte) (this.column + 1);
 
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(this.row, col)) {
-            int r = this.row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].unmark();
+        //Mark all fields in front of and behind Rook
+        for(int i = -1; i <= 1; i = i + 2){
+            while(this.board.isValidField(this.row, col)) {
+                int r = this.row - Chessboard.FIRST_ROW;
+                int c = col - Chessboard.FIRST_COLUMN;
+                if(mark){
+                    this.board.fields[r][c].mark();
+                }else{
+                    this.board.fields[r][c].unmark();
+                }
 
-            col++;
+                col = (byte) (col + i);
+            }
         }
 
-        col = (byte) (this.column - 1);
+        char row = (char) (this.row + 1);
 
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(this.row, col)) {
-            int r = this.row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].unmark();
+        //Mark all fields above and below Rook
+        for(int i = -1; i <= 1; i = i + 2){
+            while(this.board.isValidField(row, this.column)) {
+                int r = row - Chessboard.FIRST_ROW;
+                int c = this.column - Chessboard.FIRST_COLUMN;
+                if(mark){
+                    this.board.fields[r][c].mark();
+                }else{
+                    this.board.fields[r][c].unmark();
+                }
 
-            col--;
+                row = (char) (row + i);
+            }
         }
     }
 }

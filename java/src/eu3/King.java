@@ -11,11 +11,35 @@ public class King extends Chesspiece {
 
     @Override
     public void markReachableFields() {
+        for (int i = -1 ; i <= 1; i++){
+            byte col = (byte) (this.column + i);
+            for (int j = -1; j <= 1; j++){
+                char row = (char) (this.row + j);
 
+                if (this.board.isValidField (row, col))
+                {
+                    int r = row - Chessboard.FIRST_ROW;
+                    int c = col - Chessboard.FIRST_COLUMN;
+                    this.board.fields[r][c].mark ();
+                }
+            }
+        }
     }
 
     @Override
     public void unmarkReachableFields() {
+        for (int i = -1 ; i <= 1; i++){
+            byte col = (byte) (this.column + i);
+            for (int j = -1; j <= 1; j++){
+                char row = (char) (this.row + j);
 
+                if (this.board.isValidField (row, col))
+                {
+                    int r = row - Chessboard.FIRST_ROW;
+                    int c = col - Chessboard.FIRST_COLUMN;
+                    this.board.fields[r][c].unmark ();
+                }
+            }
+        }
     }
 }

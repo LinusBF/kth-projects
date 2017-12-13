@@ -34,7 +34,11 @@ public abstract class Chesspiece {
         int c = column - Chessboard.FIRST_COLUMN;
         this.board.fields[r][c].put (this);
     }
-    public void moveOut () {}
+    public void moveOut () {
+        this.board.fields[this.row][this.column].take();
+        this.row = 0;
+        this.column = -1;
+    }
     public abstract void markReachableFields ();
     public abstract void unmarkReachableFields ();
 

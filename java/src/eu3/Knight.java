@@ -11,32 +11,52 @@ public class Knight extends Chesspiece {
 
     @Override
     public void markReachableFields() {
-        byte col = (byte) (this.column + 1);
-        char row = (char) (this.row + 1);
+        genMark((byte) (this.column + 1), (char) (this.row + 2), true);
 
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(row, col)) {
-            int r = row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark();
+        genMark((byte) (this.column + 2), (char) (this.row + 1), true);
 
-            col++;
-        }
+        genMark((byte) (this.column - 1), (char) (this.row + 2), true);
 
-        col = (byte) (this.column - 1);
+        genMark((byte) (this.column + 1), (char) (this.row - 2), true);
 
-        //Mark all fields in front of Rook
-        while(this.board.isValidField(this.row, col)) {
-            int r = this.row - Chessboard.FIRST_ROW;
-            int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark();
+        genMark((byte) (this.column - 1), (char) (this.row - 2), true);
 
-            col--;
-        }
+        genMark((byte) (this.column - 2), (char) (this.row - 1), true);
+
+        genMark((byte) (this.column - 2), (char) (this.row + 1), true);
+
+        genMark((byte) (this.column + 2), (char) (this.row - 1), true);
     }
 
     @Override
     public void unmarkReachableFields() {
+        genMark((byte) (this.column + 1), (char) (this.row + 2), false);
 
+        genMark((byte) (this.column + 2), (char) (this.row + 1), false);
+
+        genMark((byte) (this.column - 1), (char) (this.row + 2), false);
+
+        genMark((byte) (this.column + 1), (char) (this.row - 2), false);
+
+        genMark((byte) (this.column - 1), (char) (this.row - 2), false);
+
+        genMark((byte) (this.column - 2), (char) (this.row - 1), false);
+
+        genMark((byte) (this.column - 2), (char) (this.row + 1), false);
+
+        genMark((byte) (this.column + 2), (char) (this.row - 1), false);
+    }
+
+    private void genMark(byte col, char row, boolean mark){
+        if (this.board.isValidField (row, col))
+        {
+            int r = row - Chessboard.FIRST_ROW;
+            int c = col - Chessboard.FIRST_COLUMN;
+            if(mark){
+                this.board.fields[r][c].mark();
+            }else{
+                this.board.fields[r][c].unmark();
+            }
+        }
     }
 }
