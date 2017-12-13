@@ -45,7 +45,7 @@ public class Chessboard {
     public static final int NUMBER_OF_ROWS = 8;
     public static final int NUMBER_OF_COLUMNS = 8;
     public static final int FIRST_ROW = 'a';
-    public static final int FIRST_COLUMN = 1;
+    public static final int FIRST_COLUMN = 0;
     public Field[][] fields;
 
     public Chessboard () {
@@ -66,16 +66,15 @@ public class Chessboard {
         char row = 0;
         byte column = 0;
         String output = "CHESS:\n";
+        output += "\\" + "\t1\t2\t3\t4\t5\t6\t7\t8\n";
+
         for (int r = 0; r < NUMBER_OF_ROWS; r++) {
             row = (char) (FIRST_ROW + r);
             column = FIRST_COLUMN;
-            output += row + "  ";
+            output += row + "\t";
+
             for (int c = 0; c < NUMBER_OF_COLUMNS; c++) {
-                if (r == 0){
-                    output += column + "  ";
-                } else{
-                    output += this.fields[r][c].toString() + "  ";
-                }
+                output += this.fields[r][c].toString() + "\t";
             }
             output += "\n";
         }
@@ -88,11 +87,15 @@ public class Chessboard {
             return false;
         }
 
-        if(column > 8 || column < 1){
+        if(column > 7 || column < 0){
             return false;
         }
 
-        if (this.fields[row][column].piece != null){
+        try{
+            if (this.fields[row - FIRST_ROW][column].piece != null){
+                return false;
+            }
+        } catch (ArrayIndexOutOfBoundsException e){
             return false;
         }
 

@@ -17,7 +17,7 @@ public class Pawn extends Chesspiece {
         {
             int r = this.row - Chessboard.FIRST_ROW;
             int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark ();
+            this.board.fields[r][c].mark();
         }
     }
 
@@ -28,7 +28,7 @@ public class Pawn extends Chesspiece {
         {
             int r = this.row - Chessboard.FIRST_ROW;
             int c = col - Chessboard.FIRST_COLUMN;
-            this.board.fields[r][c].mark ();
+            this.board.fields[r][c].unmark();
         }
     }
 }

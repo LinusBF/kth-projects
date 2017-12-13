@@ -21,10 +21,9 @@ public class Rook extends Chesspiece {
     }
 
     private void genMark(boolean mark){
-        byte col = (byte) (this.column + 1);
-
         //Mark all fields in front of and behind Rook
         for(int i = -1; i <= 1; i = i + 2){
+            byte col = (byte) (this.column + i);
             while(this.board.isValidField(this.row, col)) {
                 int r = this.row - Chessboard.FIRST_ROW;
                 int c = col - Chessboard.FIRST_COLUMN;
@@ -38,10 +37,9 @@ public class Rook extends Chesspiece {
             }
         }
 
-        char row = (char) (this.row + 1);
-
         //Mark all fields above and below Rook
         for(int i = -1; i <= 1; i = i + 2){
+            char row = (char) (this.row + i);
             while(this.board.isValidField(row, this.column)) {
                 int r = row - Chessboard.FIRST_ROW;
                 int c = this.column - Chessboard.FIRST_COLUMN;

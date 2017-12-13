@@ -35,7 +35,7 @@ public abstract class Chesspiece {
         this.board.fields[r][c].put (this);
     }
     public void moveOut () {
-        this.board.fields[this.row][this.column].take();
+        this.board.fields[this.row - Chessboard.FIRST_ROW][this.column].take();
         this.row = 0;
         this.column = -1;
     }
