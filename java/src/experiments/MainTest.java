@@ -12,7 +12,7 @@ public class MainTest {
 
     }
 
-    public <K, E> K findElement(List<Genereics<K, E>> assoc, K key){
+    public <K, E> K findElement(List<Generics<K, E>> assoc, K key){
         return key;
     }
 }
