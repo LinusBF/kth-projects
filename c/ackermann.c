@@ -32,9 +32,9 @@ int main()
 	print_time();
 	printf("\n");
 
-	for (int i = 0; i < 7; ++i)
+	for (int i = 0; i < 12; ++i)
 	{
-		for (int j = 0; j < 7; ++j)
+		for (int j = 0; j < 2; ++j)
 		{
 			print_time();
 			printf("Start solving ackermann [%d, %d]\n", i, j);
