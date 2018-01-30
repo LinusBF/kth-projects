@@ -24,7 +24,7 @@ main:
 	syscall
 	nop
 	# wait a little
-	li	$a0,2
+	li	$a0,1000
 	jal	delay
 	nop
 	# call tick
@@ -93,8 +93,22 @@ hexasc:
 	nop			# Safety
 	
 delay:
- jr $ra
- nop
+	addi $t0, $0, 1	# Initialize constant
+	add $t1, $0, $0		# Initialize i
+	while:
+		add $t1, $0, $0		# Reset i
+		for:
+			addi $t1, $t1, 1	# i + 1
+			bne $t1, $t0, for	# i < const
+			nop
+
+		subi $a0, $a0, 1	# ms - 1
+		slti $t2, $a0, 1	# if(ms > 0)
+		bne $t2, 1, while	#   continue while
+		nop
+	
+	jr $ra
+	nop
  
 time2string:
 	PUSH($s0)
@@ -107,6 +121,7 @@ time2string:
 	loop:
 		slti $t3, $s2, 4	# Check i >= 4
 		beq $t3, $0, done
+		nop
  		add $t4, $0, $s2	# Set t4 to i
  		sll $t4, $t4, 2		# Multiply i by 4 for byte index
  		srlv $t5, $s0, $t4	# Shift a1 so that the the byte at i is visible
@@ -145,5 +160,5 @@ time2string:
  		POP($s0)
  		
  		jr $ra
- 
+ 		nop
  
