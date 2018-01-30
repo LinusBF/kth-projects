@@ -97,58 +97,53 @@ delay:
  nop
  
 time2string:
-	andi $t0, $a1, 0xffff	# Mask a1 so that only the 4 LSB are left
-	li $t1, 0		# Init value to store clock in ascii
-	li $t2, 0		# Init i for loop
-	PUSH($a0)
-	PUSH($a1)
-	PUSH($t0)
-	PUSH($t1)
-	PUSH($t2)
+	PUSH($s0)
+	PUSH($s1)
+	PUSH($s2)
+	andi $s0, $a1, 0xffff	# Mask a1 so that only the 4 LSB are left
+	li $s1, 0		# Init value to store clock in ascii
+	li $s2, 0		# Init i for loop
+	PUSH($ra)		
 	loop:
-		slti $t3, $t2, 4	# Check i >= 4
+		slti $t3, $s2, 4	# Check i >= 4
 		beq $t3, $0, done
-		addi $t4, $0, 3
- 		sub $t4, $t4, $t2	# Set t4 to 4 - i
- 		sll $t4, $t4, 2
- 		srlv $t5, $t0, $t4	# Shift a1 so that the the byte at i is visible
+ 		add $t4, $0, $s2	# Set t4 to i
+ 		sll $t4, $t4, 2		# Multiply i by 4 for byte index
+ 		srlv $t5, $s0, $t4	# Shift a1 so that the the byte at i is visible
+ 		
+ 		PUSH($a0)		# Put given a0 and a1 on the stack
+ 		PUSH($a1)
  		add $a0, $t5, $0	# Set argument for hexasc function
  		jal hexasc		# Call hexasc
  		nop
- 		POP($t2)		# Load variables after function call
- 		POP($t1)
- 		POP($t0)
+ 		
  		POP($a1)
  		POP($a0)
- 		sll $t1, $t1, 8		# Shift ascii clock value 8 bits to the left to make room for return value from hexasc
- 		or $t1, $t1, $v0	# Or answer from hexasc into ascii clock value variable
- 		addi $t2, $t2, 1	# Increment i
- 		PUSH($a0)	# PUSH variables for safe keeping during next loop
-		PUSH($a1)
-		PUSH($t0)
-		PUSH($t1)
-		PUSH($t2)
+ 		sll $s1, $s1, 8		# Shift ascii clock value 8 bits to the left to make room for return value from hexasc
+ 		or $s1, $s1, $v0	# Or answer from hexasc into ascii clock value variable
+ 		addi $s2, $s2, 1	# Increment i
+
 		j loop
 		nop
  	done:
- 		POP($t2)	# Load variables after function call
- 		POP($t1)
- 		POP($t0)
- 		POP($a1)
- 		POP($a0)
+ 		POP($ra)
  		
- 		andi $t3, $t1, 0xffff0000	# Mask ascii clock value with FFFF to store minutes in the MSB
- 		ori $t3, $t3, 0x3A00		# Or in the ascii value for comma
- 		andi $t4, $t1, 0xff00		# Mask ascii clock value with FF00 to get most significant seconds number
- 		srl $t4, $t4, 8			# Shift the value to the right to fit in $t3
+ 		andi $t3, $s1, 0xffff		# Mask ascii clock value with FFFF to store minutes in the LSB
+ 		ori $t3, $t3, 0x3A0000		# Or in the ascii value for comma
+ 		andi $t4, $s1, 0xff0000		# Mask ascii clock value with FF00 to get most significant seconds number
+ 		sll $t4, $t4, 8			# Shift the value to the left to fit in $t3
  		or $t3, $t3, $t4		# Or in the most significant seconds number in the LSB of t3
  		
- 		andi $t5, $t1, 0xff		# Mask scii clock value with FF to store least significant seconds number
- 		sll $t5, $t5, 24		# Shift value so that the seconds number is the MSB
+ 		andi $t5, $s1, 0xff000000	# Mask scii clock value with FF000000 to store least significant seconds number
+ 		srl $t5, $t5, 24		# Shift to LSB
  		
  		sw $t3, 0($a0)			# Store t3 (first 4 ascii characters) at the address in a0
- 		sw $t5, 4($a0)			# Store t5 (last ascii character and null byte) at the word after a0 (a0 + 4)
- 
+ 		sw $t5, 4($a0)			# Store t5 (last ascii character) at the word after a0 (a0 + 4)
+ 		
+ 		POP($s2)
+ 		POP($s1)
+ 		POP($s0)
+ 		
  		jr $ra
  
  
