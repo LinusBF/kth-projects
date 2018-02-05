@@ -40,23 +40,19 @@ void print_sieves(int n) {
     clock_t begin = clock(); // Start timing
 
     int *ha;
-    ha = (int *)malloc(sizeof(int)*n);
+    ha = calloc(n, sizeof *ha);
 
     if(ha == NULL) {
-        printf("malloc FAILED\n");
+        printf("calloc FAILED\n");
         exit(1);
     }
 
-    for(int i = 0; i < n; i++){ // Set every element in array to prime (1)
-        ha[i] = 1;
-    }
-
-    // Start of Sieve algorithm using 1 as prime and 0 as !prime
+    // Start of Sieve algorithm using 0 as prime and 1 as !prime
     int i = 2;
     while(i*i <= n){
-        if(ha[i]){
+        if(!ha[i]){
             for (int j = i*i; j <= n; j += i) {
-                ha[j] = 0; // Set j to !prime (0)
+                ha[j] = 1; // Set j to !prime (1)
             }
         }
         i++;
@@ -64,7 +60,7 @@ void print_sieves(int n) {
 
     // Print array
     for(i = 2; i < n; i++){
-        if(ha[i]){ // If i is prime, print
+        if(!ha[i]){ // If i is prime, print
             print_number(i);
         }
     }
@@ -73,7 +69,7 @@ void print_sieves(int n) {
 
     clock_t end = clock(); // End timing
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Operation took %f seconds", time_spent);
+    printf("\nOperation took %f seconds", time_spent);
 }
 
 // 'argc' contains the number of program arguments, and

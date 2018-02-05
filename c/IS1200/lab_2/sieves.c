@@ -64,7 +64,7 @@ void print_sieves(int n) {
 
     clock_t end = clock(); // End timing
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("Operation took %f seconds", time_spent);
+    printf("\nOperation took %f seconds", time_spent);
 }
 
 // 'argc' contains the number of program arguments, and
