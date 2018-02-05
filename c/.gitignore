@@ -3,5 +3,5 @@
 *.log
 CMakeLists.txt
 .idea/
-a.exe
+*.exe
 *.stackdump
