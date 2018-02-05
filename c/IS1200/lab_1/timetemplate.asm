@@ -149,7 +149,8 @@ time2string:
  		sll $t4, $t4, 8			# Shift the value to the left to fit in $t3
  		or $t3, $t3, $t4		# Or in the most significant seconds number in the LSB of t3
  		
- 		andi $t5, $s1, 0xff000000	# Mask scii clock value with FF000000 to store least significant seconds number
+ 		la $t6, 0xff000000
+ 		andi $t5, $s1,$t6 		# Mask scii clock value with FF000000 to store least significant seconds number
  		srl $t5, $t5, 24		# Shift to LSB
  		
  		sw $t3, 0($a0)			# Store t3 (first 4 ascii characters) at the address in a0
