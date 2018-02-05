@@ -39,12 +39,12 @@ void print_number(int n){
 void print_sieves(int n) {
     clock_t begin = clock(); // Start timing
 
-    // Start of Sieve algorithm using 1 as prime and 0 as !prime
     int a[n];
     for(int i = 0; i < n; i++){ // Set every element in array to true (1)
         a[i] = 1;
     }
 
+    // Start of Sieve algorithm using 1 as prime and 0 as !prime
     int i = 2;
     while(i*i <= n){
         if(a[i]){

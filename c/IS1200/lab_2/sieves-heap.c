@@ -39,7 +39,6 @@ void print_number(int n){
 void print_sieves(int n) {
     clock_t begin = clock(); // Start timing
 
-    // Start of Sieve algorithm using 0 as prime and 1 as !prime
     int *ha;
     ha = (int *)malloc(sizeof(int)*n);
 
@@ -52,6 +51,7 @@ void print_sieves(int n) {
         ha[i] = 1;
     }
 
+    // Start of Sieve algorithm using 1 as prime and 0 as !prime
     int i = 2;
     while(i*i <= n){
         if(ha[i]){
