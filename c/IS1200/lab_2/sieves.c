@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define COLUMNS 6
 int written_numbers = 0;
@@ -36,6 +37,8 @@ void print_number(int n){
 
 // Prints all sieves numbers up to and including an integer n - Linus Bein Fahlander
 void print_sieves(int n) {
+    clock_t begin = clock(); // Start timing
+
     // Start of Sieve algorithm using 1 as prime and 0 as !prime
     int a[n];
     for(int i = 0; i < n; i++){ // Set every element in array to true (1)
@@ -58,6 +61,10 @@ void print_sieves(int n) {
             print_number(i);
         }
     }
+
+    clock_t end = clock(); // End timing
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Operation took %f seconds", time_spent);
 }
 
 // 'argc' contains the number of program arguments, and
