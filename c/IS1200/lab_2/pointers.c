@@ -27,7 +27,7 @@ void endian_proof(const char *c) {
 void copycodes(char *text, int *list, int *count) {
     do {
         *list++ = (int) *text++;
-        *count = *count + 1;
+        (*count)++;
     } while (*text != 0);
 }
 
