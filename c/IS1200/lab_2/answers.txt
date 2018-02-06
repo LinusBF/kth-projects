@@ -1,0 +1,43 @@
+1)
+gv is a gobal variable and as such is changed in "fun". 
+m is a local variable and is not a pointer,
+so in "fun" "param" is a temporary copy of m that is only used within the scope of the function.
+
+2)
+The size of the pointer is the size of an address -> 32bits
+
+3)
+The phrase is 8 characters long and a character string ends with a null byte,
+so the char array has to have 9 elements (bytes)
+
+4)
+They are allocated under the 0x9D000000+ addresses ->
+That is the "KSEG0"(cacheable range) Program Flash (Non volatile)
+They represent the address where the first instruction of the function is stored?
+
+5)
+They are allocated under the 0xA0000000+ addresses ->
+That is the "KSEG1"(non-cachable range) Data RAM.
+
+Since they are global values for the whole program to use and manipulate, they are put under the
+Data RAM instead of Program RAM.
+
+6)
+They are allocated under the (0xA000000 + Program Base Address(4FE0?) ) addresses ->
+That is the "KSEG1"(non-cachable range) Program RAM.
+Their addresses are bigger becasue they are stored at the DKPBA (Data Kernel Program Base Address),
+which is a address added on to the Data RAM address to seperate the two.
+
+7)
+Address: A0003FE8
+Value: A0003FE4 (m)
+Value of pointer address: 7
+
+8)
+Address: A0003FE8
+Value: A0003FE4 (m)
+Value of pointer address: 8
+
+9)
+Seems to be big-endian
+The value was set to 0x1234abcd but the order of the value in memory is [cd, ab, 34, 12]
