@@ -35,7 +35,7 @@ int main()
 
   /* Do some calculation. */
   gv = 4;
-  m = gv + in;
+  m = gv + in;  //m set to 7  -  Linus Bein Fahlander
 
   /* Check the addresses and values of some variables and stuff */
   saveword( "AM1: gv", &gv );
@@ -43,7 +43,7 @@ int main()
   saveword( "AM3: fun", &fun );
   saveword( "AM4: main", &main );
 
-  p = &m;
+  p = &m;  // p pointing to m  -  Linus Bein Fahlander
 
   /* Check p and m */
   saveword( "AM5: p", &p );
@@ -51,13 +51,14 @@ int main()
 
   /* Change *p */
 
-  *p = *p + 1;
+  *p = *p + 1;  // add 1 to p (and m (7 -> 8))  -  Linus Bein Fahlander
 
   /* Check p and m */
   saveword( "AM7: p", &p );
   saveword( "AM8: m", &m );
 
   p = (int*)cp;   /* Casting a char pointer to an integer pointer */
+  //p now points to cs[0]  -  Linus Bein Fahlander
 
   saveword( "AM9: p", &p );
 
@@ -67,17 +68,18 @@ int main()
   savebyte( "AM13: cs[3]", &cs[3] );
 
   *p = 0x1234abcd; /* It starts to get interesting... */
+  //Setting the value of the first 4 values of cs to [cd, ab, 34, 12]  -  Linus Bein Fahlander
 
   savebyte( "AM14: cs[0]", &cs[0] );
-  savebyte( "AM15: cs[1]", &cs[1] ); 
+  savebyte( "AM15: cs[1]", &cs[1] );
   savebyte( "AM16: cs[2]", &cs[2] );
   savebyte( "AM17: cs[3]", &cs[3] );
 
-  fun(m);
+  fun(m); // Copy m and increment with one (8 -> 9) and set gv to the new value (9), m stays the same as it is not a pointer  -  Linus Bein Fahlander
 
   /* Re-check the addresses and values of m and gv */
-  saveword( "AM18: m", &m );
-  saveword( "AM19: gv", &gv );
+  saveword( "AM18: m", &m );  // 8  -  Linus Bein Fahlander
+  saveword( "AM19: gv", &gv );  // 9  -  Linus Bein Fahlander
 
   showinfo();
 }
