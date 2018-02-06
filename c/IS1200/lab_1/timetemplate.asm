@@ -153,6 +153,16 @@ time2string:
  		andi $t5, $s1,$t6 		# Mask scii clock value with FF000000 to store least significant seconds number
  		srl $t5, $t5, 24		# Shift to LSB
  		
+ 		andi $t6, $s0, 0x1
+ 		addi $t7, $0, 0x44
+ 		bne $t6, $0, odd
+ 		nop
+ 		addi $t7, $t7, 1
+
+ 		odd:
+ 		sll $t7, $t7, 8
+ 		or $t5, $t5, $t7
+ 		
  		sw $t3, 0($a0)			# Store t3 (first 4 ascii characters) at the address in a0
  		sw $t5, 4($a0)			# Store t5 (last ascii character) at the word after a0 (a0 + 4)
  		
