@@ -25,13 +25,13 @@ int is_prime(int n){
 }
 
 // Prints a number in one of the columns - Linus Bein Fahlander
-void print_number(int n){
+void print_number(int n, int dist){
     if(written_numbers == COLUMNS){
         printf("\n");
         written_numbers = 0;
     }
 
-    printf("%10d ", n);
+    printf("%10d(%d) ", n, dist);
     written_numbers++;
 }
 
@@ -55,10 +55,12 @@ void print_sieves(int n) {
         i++;
     } // End of Sieve algorithm
 
+    int last_prime = 2;
     // Print array
     for(i = 2; i < n; i++){
         if(a[i]){ // If i is prime, print
-            print_number(i);
+            print_number(i, (i - last_prime));
+            last_prime = i;
         }
     }
 
