@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stbool.h>
 #include <time.h>
 
 #define COLUMNS 6
@@ -39,7 +40,7 @@ void print_number(int n){
 void print_sieves(int n) {
     clock_t begin = clock(); // Start timing
 
-    int *ha;
+    bool *ha;
     ha = calloc(n, sizeof *ha);
 
     if(ha == NULL) {
@@ -52,7 +53,7 @@ void print_sieves(int n) {
     while(i*i <= n){
         if(!ha[i]){
             for (int j = i*i; j <= n; j += i) {
-                ha[j] = 1; // Set j to !prime (1)
+                ha[j] = true; // Set j to !prime (1)
             }
         }
         i++;

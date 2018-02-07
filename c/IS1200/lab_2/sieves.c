@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stbool.h>
 #include <time.h>
 
 #define COLUMNS 6
@@ -39,9 +40,9 @@ void print_number(int n, int dist){
 void print_sieves(int n) {
     clock_t begin = clock(); // Start timing
 
-    int a[n];
+    bool a[n];
     for(int i = 0; i < n; i++){ // Set every element in array to true (1)
-        a[i] = 1;
+        a[i] = true;
     }
 
     // Start of Sieve algorithm using 1 as prime and 0 as !prime
@@ -49,7 +50,7 @@ void print_sieves(int n) {
     while(i*i <= n){
         if(a[i]){
             for (int j = i*i; j <= n; j += i) {
-                a[j] = 0; // Set j to !prime
+                a[j] = false; // Set j to !prime
             }
         }
         i++;
