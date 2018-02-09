@@ -61,7 +61,7 @@ void print_sieves(int n) {
 
     // Print array
     for(i = 2; i < n; i++){
-        if(!ha[i]){ // If i is prime, print
+        if(!ha[i]){ // If i is prime, prin
             print_number(i);
         }
     }
