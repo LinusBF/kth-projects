@@ -18,6 +18,7 @@ int mytime = 0x5957;
 char textstring[] = "text, more text, and even more text!";
 int timeoutcount = 0;
 volatile unsigned * led_port = (unsigned *) 0xBF886110;
+int prime = 1234567;
 
 // For Debugging
 char* itoa(int i, char b[]){
@@ -43,7 +44,27 @@ char* itoa(int i, char b[]){
 /* Interrupt Service Routine */
 void user_isr( void )
 {
-  return;
+  if(IFS(0) & 0x100){
+    IFSCLR(0) = 0x100;
+    timeoutcount += 1;
+
+    if(timeoutcount == 10){
+      timeoutcount = 0;
+      time2string( textstring, mytime );
+      display_string( 3, textstring );
+      display_update();
+      tick( &mytime );
+    }
+  }
+
+  if(IFS(0) & 0x80){
+    IFSCLR(0) = 0x80;
+    if(*led_port < 0xFF){
+      *led_port = *led_port + 1;
+    } else{
+      *led_port = 0x00;
+    }
+  }
 }
 
 /* Lab-specific initialization goes here */
@@ -58,36 +79,15 @@ void labinit( void )
   PR2 = 31250;
   T2CONSET = 0x8000;
 
+  IECSET(0) = 0x100;
+  IPCSET(2) = 0x1F;
+
+  IECSET(0) = 0x80;
+  IPCSET(1) = 0x1E00;
+
+  enable_interrupt();
+
   return;
-}
-
-void check_timeset(void){
-  int btns = getbtns();
-  if (btns > 0)
-  {
-    int sw = getsw();
-
-    if ((btns & 0x4))
-    {
-      int new_time = mytime & 0x0FFF;
-      new_time = (sw << 12) | new_time;
-      mytime = new_time;
-    }
-
-    if((btns & 0x2))
-    {
-      int new_time = mytime & 0xF0FF;
-      new_time = (sw << 8) | new_time;
-      mytime = new_time;
-    }
-
-    if((btns & 0x1))
-    {
-      int new_time = mytime & 0xFF0F;
-      new_time = (sw << 4) | new_time;
-      mytime = new_time;
-    }
-  }
 }
 
 /* This function is called repetitively from the main program */
@@ -99,25 +99,8 @@ void labwork( void )
   display_string(2, debug);
   */
 
-  check_timeset();
-
-  if(IFS(0) & 0x100){
-    IFSCLR(0) = 0x100;
-    timeoutcount += 1;
-
-    if(timeoutcount == 10){
-      timeoutcount = 0;
-      time2string( textstring, mytime );
-      display_string( 3, textstring );
-      display_update();
-      tick( &mytime );
-      display_image(96, icon);
-
-      if(*led_port < 0xFF){
-        *led_port = *led_port + 1;
-      } else{
-        *led_port = 0x00;
-      }
-    }
-  }
+  //display_debug(&mytime);
+  prime = nextprime( prime );
+  display_string( 0, itoaconv( prime ) );
+  display_update();
 }
