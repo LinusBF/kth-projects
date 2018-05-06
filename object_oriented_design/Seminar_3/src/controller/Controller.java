@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class Controller {
     private Sale currentSale = null;
+    private int currentMemberId = -1;
     private InventoryHandler inventory;
     private MembershipHandler memberships;
 
@@ -22,17 +23,20 @@ public class Controller {
         this.memberships = new MembershipHandler();
     }
 
+    //Initiates a sale
     public void startSale(){
         this.currentSale = new Sale();
     }
 
+    //Adds an item to the current sale
     public ItemDTO enterItem(int itemId, int quantity){
         ItemDTO item = inventory.getItemInfo(itemId);
         this.currentSale.addToSale(item, quantity);
         return item;
     }
 
-    //Return total with taxes
+    //Removes the purchased items from the inventory and expends any potential discounts
+    //Returns total with taxes
     public double completeSale(){
         double finalPrice = currentSale.getTotalWithTax();
         Map<ItemDTO, Integer> items = currentSale.getItems();
@@ -40,16 +44,21 @@ public class Controller {
             //Doesn't handle case where cashier tries to remove more items than are in stock
             inventory.removeFromStock(entry.getKey().getItemId(), entry.getValue());
         }
+        if(this.currentMemberId > 0){
+            memberships.expendDiscount(currentMemberId);
+            this.currentMemberId = -1;
+        }
         return finalPrice;
     }
 
-    //Return new total with taxes
+    //Returns new total with taxes
     public double getCustomerDiscount(int memberId){
         DiscountDTO discount = memberships.getEligibleDiscount(memberId);
+        this.currentMemberId = memberId;
         return currentSale.applyDiscount(discount);
     }
 
-    //Return amount of change to give to customer
+    //Returns amount of change to give to customer
     public double registerPayment(double payment){
         double change = currentSale.pay(payment);
         Printer.printReceipt(currentSale.getSaleInfo());

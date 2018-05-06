@@ -18,10 +18,15 @@ public class SaleInfo {
     }
 
     void addItem(ItemDTO item, int quantity){
-        this.items.put(item, quantity);
+        if(!items.containsKey(item)) {
+            this.items.put(item, quantity);
+        } else{
+            this.items.replace(item, this.items.get(item) + quantity);
+        }
         this.total += item.getPrice() * quantity;
     }
 
+    //Returns the total value of the sale, with discounts applied if it exists
     public double getTotal() {
         double totalWithDiscounts = this.total;
         if(this.discount != null){

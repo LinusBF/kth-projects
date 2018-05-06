@@ -12,7 +12,7 @@ public class DiscountDTO {
         this.expireDate = date;
     }
 
-    public double getPercentage(){
+    double getPercentage(){
         return this.percentage;
     }
 
