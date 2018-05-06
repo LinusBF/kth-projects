@@ -48,23 +48,12 @@ public class Controller {
     }
 
     /**
-     * Removes the purchased items from the inventory and expends any potential discounts
      * Returns total with taxes
      *
      * @return double
      */
     public double completeSale(){
-        double finalPrice = currentSale.getTotalWithTax();
-        Map<ItemDTO, Integer> items = currentSale.getItems();
-        for (Map.Entry<ItemDTO, Integer> entry : items.entrySet()){
-            //Doesn't handle case where cashier tries to remove more items than are in stock
-            inventory.removeFromStock(entry.getKey().getItemId(), entry.getValue());
-        }
-        if(this.currentMemberId > 0){
-            memberships.consumeDiscount(currentMemberId);
-            this.currentMemberId = -1;
-        }
-        return finalPrice;
+        return currentSale.getTotalWithTax();
     }
 
     /**
@@ -81,12 +70,22 @@ public class Controller {
 
     /**
      * Returns amount of change to give to customer
+     * Removes the purchased items from the inventory and consumes any potential discounts
      *
      * @param payment double
      * @return double
      */
-    public double registerPayment(double payment){
+    public double completePayment(double payment){
         double change = currentSale.pay(payment);
+        Map<ItemDTO, Integer> items = currentSale.getItems();
+        for (Map.Entry<ItemDTO, Integer> entry : items.entrySet()){
+            //Doesn't handle case where cashier tries to remove more items than are in stock
+            inventory.removeFromStock(entry.getKey().getItemId(), entry.getValue());
+        }
+        if(this.currentMemberId > 0){
+            memberships.consumeDiscount(currentMemberId);
+            this.currentMemberId = -1;
+        }
         Printer.printReceipt(currentSale.getSaleInfo());
         return change;
     }

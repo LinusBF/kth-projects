@@ -52,7 +52,7 @@ public class View {
     private void finishSale(Scanner scan){
         System.out.println("Please enter the amount payed:");
         double payment = scan.nextDouble();
-        double change = controller.registerPayment(payment);
+        double change = controller.completePayment(payment);
         baseDisplay("Purchase completed:\nAmount paid: " + String.format("%.2f", payment) + "\nChange: " + String.format("%.2f", change));
     }
 
@@ -111,9 +111,9 @@ public class View {
                 System.out.println("Please enter member identification:");
                 int memberId = scan.nextInt();
                 totalWithTax = controller.getCustomerDiscount(memberId);
+                baseDisplay(displayTotal(totalWithTax));
+                finishSale(scan);
+                break;
         }
-
-        baseDisplay(displayTotal(totalWithTax));
-        finishSale(scan);
     }
 }
