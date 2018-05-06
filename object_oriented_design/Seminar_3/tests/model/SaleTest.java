@@ -43,7 +43,7 @@ public class SaleTest {
         ItemDTO testItem = inventory.getItemInfo(1);
         sale.addToSale(testItem, 1);
         Map<ItemDTO, Integer> items = sale.getItems();
-        assertEquals("Item has not been added", true, items.containsKey(testItem));
+        assertTrue("Item has not been added", items.containsKey(testItem));
         assertEquals("Item does not have the correct quantity", 1, (int) items.get(testItem));
         int size = items.size();
         assertEquals("There are more than one item in the basket", 1, size);
@@ -80,15 +80,17 @@ public class SaleTest {
         sale.addToSale(testItem3, 1);
         Map<ItemDTO, Integer> items = sale.getItems();
 
-        assertEquals("Items has not been added", true, items.containsKey(testItem));
+        assertTrue("Items has not been added", items.containsKey(testItem));
         assertEquals("Item does not have the correct quantity", 3, (int) items.get(testItem2));
         int size = items.size();
         assertEquals("The number of items in the basket is not correct", 3, size);
 
-        //The total cost of all items added
-        double expectedAmountToPay = 114.95 * (1 + (TAX / 100));
+        double expectedAmountToPay = testItem.getPrice();
+        expectedAmountToPay += (testItem2.getPrice() * 3);
+        expectedAmountToPay += testItem3.getPrice();
+        expectedAmountToPay = expectedAmountToPay * (1 + (TAX / 100));
         double cash = 150;
-        double expectedChange = 5.50785;
+        double expectedChange = cash - expectedAmountToPay;
 
         double amountToPay = sale.getTotalWithTax();
         assertEquals("Amount to pay has not been calculated correctly", expectedAmountToPay, amountToPay, 0.001);

@@ -3,6 +3,7 @@ package controller;
 import integration.InventoryHandler;
 import integration.MembershipHandler;
 import integration.ItemDTO;
+import model.DiscountDTO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,7 @@ public class ControllerTest {
         inventory = new InventoryHandler();
         membership = new MembershipHandler();
         controller = new Controller(inventory, membership);
+        controller.startSale();
     }
 
     @After
@@ -31,21 +33,42 @@ public class ControllerTest {
     }
 
     @Test
-    public void testCompleteSale() throws Exception {
-        controller.startSale();
-
+    public void testEnterItem() throws Exception {
         ItemDTO expectedItem = inventory.getItemInfo(1);
 
-        ItemDTO item = controller.enterItem(1, 4);
+        ItemDTO item = controller.enterItem(1, 2);
         assertEquals("Doesn't return the correct item", expectedItem, item);
-        controller.enterItem(2, 2);
+    }
 
-        controller.completeSale();
+    @Test
+    public void testCustomerDiscount() throws Exception {
+        controller.enterItem(1, 1);
+        controller.enterItem(2, 1);
+        controller.enterItem(3, 1);
+
+        double DISCOUNT_1 = 15;
+
+        double totalBeforeDiscount = controller.getCurrentTotal();
+        double expetedTotalAfterDiscount = totalBeforeDiscount * ((100 - DISCOUNT_1) / 100);
+
+        double totalAfterDiscount = controller.getCustomerDiscount(1);
+
+        assertEquals("Discount is not applied correctly", expetedTotalAfterDiscount, totalAfterDiscount, 0.001);
+    }
+
+    @Test
+    public void testCompletePayment() throws Exception {
+        controller.enterItem(1, 4);
+        controller.enterItem(2, 2);
+        controller.enterItem(3, 1);
+
+        double BIG_PAYMENT = 500;
+        controller.completePayment(BIG_PAYMENT);
 
         //Should't be enough stock left to remove the following quantity of items
         boolean removedStock = inventory.removeFromStock(1, 7);
-        assertEquals("Stock has not been removed correctly", false, removedStock);
+        assertFalse("Stock has not been removed correctly", removedStock);
         boolean removedStock3 = inventory.removeFromStock(3, 10);
-        assertEquals("Stock has not been removed correctly", false, removedStock3);
+        assertFalse("Stock has not been removed correctly", removedStock3);
     }
 }
