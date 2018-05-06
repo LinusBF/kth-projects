@@ -18,9 +18,9 @@ public class Controller {
     private InventoryHandler inventory;
     private MembershipHandler memberships;
 
-    public Controller(){
-        this.inventory = new InventoryHandler();
-        this.memberships = new MembershipHandler();
+    public Controller(InventoryHandler inv, MembershipHandler mem){
+        this.inventory = inv;
+        this.memberships = mem;
     }
 
     //Initiates a sale

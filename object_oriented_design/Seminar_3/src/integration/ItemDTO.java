@@ -30,4 +30,17 @@ public class ItemDTO {
     public String toDisplay(int quantity) {
         return description + "\nPrice: " + String.format("%.2f", price * quantity);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ItemDTO itemDTO = (ItemDTO) o;
+
+        if (itemId != itemDTO.itemId) return false;
+        if (Double.compare(itemDTO.price, price) != 0) return false;
+        return description != null ? description.equals(itemDTO.description) : itemDTO.description == null;
+
+    }
 }

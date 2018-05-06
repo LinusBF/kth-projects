@@ -1,4 +1,6 @@
 import controller.Controller;
+import integration.InventoryHandler;
+import integration.MembershipHandler;
 import view.View;
 
 /**
@@ -7,7 +9,9 @@ import view.View;
 public class Seminar_3 {
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        InventoryHandler inventory = new InventoryHandler();
+        MembershipHandler membership = new MembershipHandler();
+        Controller controller = new Controller(inventory, membership);
         View view = new View(controller);
 
         while(true){
