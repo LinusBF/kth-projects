@@ -26,7 +26,11 @@ public class SaleInfo {
         this.total += item.getPrice() * quantity;
     }
 
-    //Returns the total value of the sale, with discounts applied if it exists
+    /**
+     * Returns the total value of the sale, with discounts applied if it exists
+     *
+     * @return double
+     */
     public double getTotal() {
         double totalWithDiscounts = this.total;
         if(this.discount != null){

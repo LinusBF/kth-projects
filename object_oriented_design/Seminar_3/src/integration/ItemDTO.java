@@ -26,7 +26,12 @@ public class ItemDTO {
         return description;
     }
 
-    //Returns a string that represents the item and the price of the item depending on the quantity of the item.
+    /**
+     * Returns a string that represents the item and the price of the item depending on the quantity of the item.
+     *
+     * @param quantity int
+     * @return String
+     */
     public String toDisplay(int quantity) {
         return description + "\nPrice: " + String.format("%.2f", price * quantity);
     }

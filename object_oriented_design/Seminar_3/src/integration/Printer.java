@@ -6,7 +6,12 @@ import model.SaleInfo;
  * Created by Linus on 2018-05-05.
  */
 public class Printer {
-    //Representation of the printer in the store
+    /**
+     * Representation of the printer in the store
+     *
+     * @param saleInfo SaleInfo
+     * @return String
+     */
     public static String printReceipt(SaleInfo saleInfo){
         return "Total after taxes: " + saleInfo.getTotal();
     }

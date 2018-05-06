@@ -35,13 +35,10 @@ public class ControllerTest {
         controller.startSale();
 
         ItemDTO expectedItem = inventory.getItemInfo(1);
-        ItemDTO expectedItem2 = inventory.getItemInfo(2);
-        ItemDTO expectedItem3 = inventory.getItemInfo(3);
 
         ItemDTO item = controller.enterItem(1, 4);
         assertEquals("Doesn't return the correct item", expectedItem, item);
-        ItemDTO item2 = controller.enterItem(2, 2);
-        ItemDTO item3 = controller.enterItem(3, 1);
+        controller.enterItem(2, 2);
 
         controller.completeSale();
 

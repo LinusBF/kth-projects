@@ -11,7 +11,9 @@ import java.util.Map;
 public class MembershipHandler {
     private Map<Integer, DiscountDTO> discountDB;
 
-    //Creates instance of object and initiates a "Database" of items, each with 10 in stock
+    /**
+     * Creates instance of object and initiates a "Database" of items, each with 10 in stock
+     */
     public MembershipHandler(){
         discountDB = new HashMap<>();
         discountDB.put(1, new DiscountDTO(15, "2018-06-21"));
@@ -22,13 +24,22 @@ public class MembershipHandler {
         discountDB.put(6, new DiscountDTO(15, "2018-11-21"));
     }
 
-    //Returns the discount that the customer is eligible for
+    /**
+     * Returns the discount that the customer is eligible for
+     *
+     * @param memberId int
+     * @return DiscountDTO
+     */
     public DiscountDTO getEligibleDiscount(int memberId){
         return this.discountDB.get(memberId);
     }
 
-    //Expends (Deletes) the discount the customer was eligible for
-    public void expendDiscount(int memberId){
+    /**
+     * Consumes (Deletes) the discount the customer was eligible for
+     *
+     * @param memberId int
+     */
+    public void consumeDiscount(int memberId){
         this.discountDB.remove(memberId);
     }
 }

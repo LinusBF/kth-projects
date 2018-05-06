@@ -13,38 +13,67 @@ public class Sale {
     private int memberId;
     private SaleInfo saleInfo = null;
 
-    //Creates the instance of the object and creates an instance specific SaleInfo object
+    /**
+     * Creates the instance of the object and creates an instance specific SaleInfo object
+     */
     public Sale(){
         this.saleInfo = new SaleInfo();
     }
 
-    //Returns the SaleInfo object
+    /**
+     * Returns the SaleInfo object
+     *
+     * @return SaleInfo
+     */
     public SaleInfo getSaleInfo(){
         return this.saleInfo;
     }
 
-    //Returns a Map of each item and the quantity of it in the basket
+    /**
+     * Returns a Map of each item and the quantity of it in the basket
+     *
+     * @return Map with each ItemDTO in the basket and the quantity of the item
+     */
     public Map<ItemDTO, Integer> getItems(){
         return this.saleInfo.getItems();
     }
 
-    //Adds an item to the current sale
+    /**
+     * Adds an item to the current sale
+     *
+     * @param item ItemDTO
+     * @param quantity int
+     */
     public void addToSale(ItemDTO item, int quantity){
         this.saleInfo.addItem(item, quantity);
     }
 
-    //Returns the total of the sale with taxes applied
+    /**
+     * Returns the total of the sale with taxes applied
+     *
+     * @return double
+     */
     public double getTotalWithTax(){
         return this.saleInfo.getTotal()*(1 + TAX / 100);
     }
 
-    //Returns the amount of change to give to the customer
+    /**
+     * Returns the amount of change to give to the customer
+     *
+     * @param amount double
+     * @return double
+     */
     public double pay(double amount){
         double amountToPay = getTotalWithTax();
         return amount - amountToPay;
     }
 
-    //Applies a discount to the total of the sale
+    /**
+     * Applies a discount to the total of the sale
+     *
+     * @param discount DiscountDTO
+     * @return double
+     */
     public double applyDiscount(DiscountDTO discount){
         this.saleInfo.setDiscount(discount);
 
