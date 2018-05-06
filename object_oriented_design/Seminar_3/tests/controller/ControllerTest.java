@@ -20,7 +20,7 @@ public class ControllerTest {
     public void setUp() throws Exception {
         inventory = new InventoryHandler();
         membership = new MembershipHandler();
-        controller = new Controller();
+        controller = new Controller(inventory, membership);
     }
 
     @After
@@ -41,18 +41,14 @@ public class ControllerTest {
         ItemDTO item = controller.enterItem(1, 4);
         assertEquals("Doesn't return the correct item", expectedItem, item);
         ItemDTO item2 = controller.enterItem(2, 2);
-        assertEquals("Doesn't return the correct item", expectedItem2, item2);
         ItemDTO item3 = controller.enterItem(3, 1);
-        assertEquals("Doesn't return the correct item", expectedItem3, item3);
 
         controller.completeSale();
 
         //Should't be enough stock left to remove the following quantity of items
         boolean removedStock = inventory.removeFromStock(1, 7);
         assertEquals("Stock has not been removed correctly", false, removedStock);
-        boolean removedStock2 = inventory.removeFromStock(1, 9);
-        assertEquals("Stock has not been removed correctly", false, removedStock2);
-        boolean removedStock3 = inventory.removeFromStock(1, 10);
+        boolean removedStock3 = inventory.removeFromStock(3, 10);
         assertEquals("Stock has not been removed correctly", false, removedStock3);
     }
 }

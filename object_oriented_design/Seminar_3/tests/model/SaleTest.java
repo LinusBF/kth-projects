@@ -81,12 +81,11 @@ public class SaleTest {
         Map<ItemDTO, Integer> items = sale.getItems();
 
         assertEquals("Items has not been added", true, items.containsKey(testItem));
-        assertEquals("Items has not been added", true, items.containsKey(testItem2));
         assertEquals("Item does not have the correct quantity", 3, (int) items.get(testItem2));
-        assertEquals("Items has not been added", true, items.containsKey(testItem3));
         int size = items.size();
         assertEquals("The number of items in the basket is not correct", 3, size);
 
+        //The total cost of all items added
         double expectedAmountToPay = 114.95 * (1 + (TAX / 100));
         double cash = 150;
         double expectedChange = 5.50785;
