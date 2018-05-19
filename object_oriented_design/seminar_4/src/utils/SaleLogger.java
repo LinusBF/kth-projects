@@ -16,6 +16,9 @@ public class SaleLogger {
 
     public void logException(Exception exc){
         String logEntry = DateAndTimeUtility.getCurrentTime() + ": Exception was thrown: " + exc.getMessage();
+        if (exc.getCause() != null){
+            logEntry += " Cause: " + exc.getCause().getMessage();
+        }
         logFile.println(logEntry);
     }
 }

@@ -1,8 +1,8 @@
 package view;
 
 import controller.Controller;
-import exceptions.DatabaseFailureException;
 import exceptions.ItemNotFoundException;
+import exceptions.OperationFailedException;
 import integration.ItemDTO;
 import utils.ErrorHandler;
 import utils.SaleLogger;
@@ -96,8 +96,8 @@ public class View {
                     } catch (ItemNotFoundException e) {
                         reportException("Could not find an item with that identifier!", e);
                         lastScannedItem = null;
-                    } catch (DatabaseFailureException e) {
-                        reportException("A database error has occurred, please contact an administrator", e);
+                    } catch (OperationFailedException e) {
+                        reportException("Could not get item information, please contact an administrator", e);
                         System.exit(0);
                     }
                     break;
@@ -114,8 +114,8 @@ public class View {
                         lastQuantity = lastQuantityTemp;
                         reportException("Could not find an item with that identifier!", e);
                         lastScannedItem = null;
-                    } catch (DatabaseFailureException e) {
-                        reportException("A database error has occurred, please contact an administrator", e);
+                    } catch (OperationFailedException e) {
+                        reportException("Could not get item information, please contact an administrator", e);
                         System.exit(0);
                     }
                     break;

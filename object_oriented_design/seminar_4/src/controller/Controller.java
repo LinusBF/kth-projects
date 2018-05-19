@@ -2,6 +2,7 @@ package controller;
 
 import exceptions.DatabaseFailureException;
 import exceptions.ItemNotFoundException;
+import exceptions.OperationFailedException;
 import integration.InventoryHandler;
 import integration.ItemDTO;
 import integration.MembershipHandler;
@@ -48,10 +49,14 @@ public class Controller {
      * @param quantity int
      * @return ItemDTO
      */
-    public ItemDTO enterItem(int itemId, int quantity) throws ItemNotFoundException, DatabaseFailureException {
-        ItemDTO item = inventory.getItemInfo(itemId);
-        this.currentSale.addToSale(item, quantity);
-        return item;
+    public ItemDTO enterItem(int itemId, int quantity) throws ItemNotFoundException, OperationFailedException {
+        try{
+            ItemDTO item = inventory.getItemInfo(itemId);
+            this.currentSale.addToSale(item, quantity);
+            return item;
+        }catch (DatabaseFailureException e){
+            throw new OperationFailedException("Could not get the item.", e);
+        }
     }
 
     /**
