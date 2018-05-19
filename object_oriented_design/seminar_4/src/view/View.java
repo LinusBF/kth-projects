@@ -98,7 +98,7 @@ public class View {
                         lastScannedItem = null;
                     } catch (OperationFailedException e) {
                         reportException("Could not get item information, please contact an administrator", e);
-                        System.exit(0);
+                        System.exit(1);
                     }
                     break;
                 case 2:
@@ -116,7 +116,7 @@ public class View {
                         lastScannedItem = null;
                     } catch (OperationFailedException e) {
                         reportException("Could not get item information, please contact an administrator", e);
-                        System.exit(0);
+                        System.exit(1);
                     }
                     break;
             }

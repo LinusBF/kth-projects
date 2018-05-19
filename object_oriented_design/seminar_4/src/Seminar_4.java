@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by Linus on 2018-05-05.
  */
-public class Seminar_3 {
+public class Seminar_4 {
 
     public static void main(String[] args) {
         InventoryHandler inventory = new InventoryHandler();
