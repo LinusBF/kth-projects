@@ -23,4 +23,16 @@ public class DiscountDTO {
     String getExpireDate() {
         return expireDate;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DiscountDTO that = (DiscountDTO) o;
+
+        if (Double.compare(that.percentage, percentage) != 0) return false;
+        return expireDate.equals(that.expireDate);
+
+    }
 }

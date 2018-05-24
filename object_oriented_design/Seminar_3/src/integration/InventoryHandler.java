@@ -29,7 +29,12 @@ public class InventoryHandler {
      * @return ItemDTO
      */
     public ItemDTO getItemInfo(int itemId){
-        return this.items.get(itemId).getItem();
+        if(this.items.get(itemId).getStock() > 0){
+            return this.items.get(itemId).getItem();
+        }
+        else{
+            return null;
+        }
     }
 
     /**
