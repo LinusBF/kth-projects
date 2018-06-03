@@ -24,7 +24,7 @@ public class SaleTest {
     public void setUp() throws Exception {
         discount25 = new DiscountDTO(25, "2018-07-20");
         discount15 = new DiscountDTO(15, "2018-07-25");
-        inventory = new InventoryHandler();
+        inventory = InventoryHandler.getInventory();
         sale = new Sale();
         sale2 = new Sale();
     }

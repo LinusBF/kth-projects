@@ -6,18 +6,19 @@ import java.io.PrintWriter;
 /**
  * Created by Linus on 2018-05-18.
  */
-public class SaleLogger {
+public class FileLogger implements PosLogger{
     private static final String LOG_FILE = "point_of_sale";
     private PrintWriter logFile;
 
-    public SaleLogger() throws IOException{
+    public FileLogger() throws IOException{
         logFile = new PrintWriter(new FileWriter(LOG_FILE+"-"+DateAndTimeUtility.getTimeStamp()+".log"),true);
     }
 
-    public void logException(Exception exc){
-        String logEntry = DateAndTimeUtility.getCurrentTime() + ": Exception was thrown: " + exc.getMessage();
-        if (exc.getCause() != null){
-            logEntry += " Cause: " + exc.getCause().getMessage();
+    @Override
+    public void logErrorMessage(String msg, Exception e) {
+        String logEntry = DateAndTimeUtility.getCurrentTime() + ": Exception was thrown: " + e.getMessage();
+        if (e.getCause() != null){
+            logEntry += "UI Message: " + msg + "\nCause: " + e.getCause().getMessage();
         }
         logFile.println(logEntry);
     }

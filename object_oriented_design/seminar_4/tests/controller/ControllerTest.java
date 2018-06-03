@@ -19,7 +19,7 @@ public class ControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        inventory = new InventoryHandler();
+        inventory = InventoryHandler.getInventory();
         membership = new MembershipHandler();
         controller = new Controller(inventory, membership);
         controller.startSale();
@@ -49,11 +49,11 @@ public class ControllerTest {
         double DISCOUNT_1 = 15;
 
         double totalBeforeDiscount = controller.getCurrentTotal();
-        double expetedTotalAfterDiscount = totalBeforeDiscount * ((100 - DISCOUNT_1) / 100);
+        double expectedTotalAfterDiscount = totalBeforeDiscount * ((100 - DISCOUNT_1) / 100);
 
         double totalAfterDiscount = controller.getCustomerDiscount(1);
 
-        assertEquals("Discount is not applied correctly", expetedTotalAfterDiscount, totalAfterDiscount, 0.001);
+        assertEquals("Discount is not applied correctly", expectedTotalAfterDiscount, totalAfterDiscount, 0.001);
     }
 
     @Test

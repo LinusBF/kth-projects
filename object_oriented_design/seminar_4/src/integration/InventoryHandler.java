@@ -11,11 +11,12 @@ import java.util.Map;
  */
 public class InventoryHandler {
     private Map<Integer, ItemStock<ItemDTO, Integer>> items;
+    private static final InventoryHandler inventory = new InventoryHandler();
 
     /**
      * Creates instance of object and initiates a "Database" of items, each with 10 in stock
      */
-    public InventoryHandler(){
+    private InventoryHandler(){
         items = new HashMap<>();
         items.put(1, new ItemStock<>(new ItemDTO(1, 14.99, "Sour cream"), 10));
         items.put(2, new ItemStock<>(new ItemDTO(2, 29.99, "Tortillas"), 10));
@@ -23,6 +24,10 @@ public class InventoryHandler {
         items.put(4, new ItemStock<>(new ItemDTO(4, 49.99, "Ground beef"), 10));
         items.put(5, new ItemStock<>(new ItemDTO(5, 4.99, "Spice mix"), 10));
         items.put(6, new ItemStock<>(new ItemDTO(6, 9.99, "Corn"), 10));
+    }
+
+    public static InventoryHandler getInventory(){
+        return inventory;
     }
 
     /**
@@ -35,10 +40,10 @@ public class InventoryHandler {
         if (itemId == 15){
             throw new DatabaseFailureException();
         }
-        if (!this.items.containsKey(itemId)){
+        if (!items.containsKey(itemId)){
             throw new ItemNotFoundException(itemId);
         }
-        return this.items.get(itemId).getItem();
+        return items.get(itemId).getItem();
     }
 
     /**

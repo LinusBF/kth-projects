@@ -49,7 +49,6 @@ public class Sale {
      */
     public void addToSale(ItemDTO item, int quantity){
         this.saleInfo.addItem(item, quantity);
-        notifyObservers();
     }
 
     /**
@@ -69,6 +68,7 @@ public class Sale {
      */
     public double pay(double amount){
         double amountToPay = getTotalWithTax();
+        notifyObservers();
         return amount - amountToPay;
     }
 

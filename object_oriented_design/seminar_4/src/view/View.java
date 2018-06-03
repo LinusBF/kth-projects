@@ -4,8 +4,7 @@ import controller.Controller;
 import exceptions.ItemNotFoundException;
 import exceptions.OperationFailedException;
 import integration.ItemDTO;
-import utils.ErrorHandler;
-import utils.SaleLogger;
+import utils.PosLogger;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,14 +14,12 @@ import java.util.Scanner;
  */
 public class View {
     private Controller controller;
-    private SaleLogger logger;
-    private ErrorHandler errorHandler;
+    private PosLogger[] loggers;
 
-    public View(Controller cont) throws IOException {
+    public View(Controller cont, PosLogger[] loggers) throws IOException {
         this.controller = cont;
         controller.addSaleObserver(new TotalRevenueView());
-        this.logger = new SaleLogger();
-        this.errorHandler = new ErrorHandler();
+        this.loggers = loggers;
     }
 
     private String displayItemInfo(ItemDTO item, int quantity){
@@ -47,7 +44,7 @@ public class View {
 
     private void baseDisplay(String currentDisplay){
         System.out.println(
-                "\n\n\n\n" +
+                "\n\n" +
                 "CURRENT DISPLAY:\n" +
                 "--------------------\n" +
                 currentDisplay +
@@ -63,8 +60,9 @@ public class View {
     }
 
     private void reportException(String uiOutput, Exception exc){
-        logger.logException(exc);
-        errorHandler.showErrorMessage(uiOutput);
+        for (PosLogger logger : this.loggers) {
+            logger.logErrorMessage(uiOutput, exc);
+        }
     }
 
     public void POSloop(){
