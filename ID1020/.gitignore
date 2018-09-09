@@ -1,0 +1,7 @@
+*.out
+*.save
+*.log
+CMakeLists.txt
+.idea/
+*.exe
+*.stackdump
