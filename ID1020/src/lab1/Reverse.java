@@ -42,6 +42,16 @@ public class Reverse {
             chars = copy(-1);
             return lastChar;
         }
+
+        @Override
+        public String toString() {
+            String out = "";
+            for(char c : chars){
+                out += c + ", ";
+            }
+            out = out.substring(0, out.length() - 2);
+            return "[" + out + "]";
+        }
     }
 
     private static CharStack getInput(){
@@ -66,6 +76,7 @@ public class Reverse {
 
     public static void main(String[] args) {
         CharStack input = getInput();
+        System.out.println(input);
         printCharStack(input);
     }
 }
