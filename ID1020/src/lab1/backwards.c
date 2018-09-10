@@ -7,57 +7,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
-    char c;
-    struct node *prev;
-} node;
-
 /* RECURSIVE SOLUTION */
 
-void recursiveIn() {
+void recursive() {
     char in = getchar();
     if (in != '\n') {
         recursiveIn();
+        putchar(in);
     }
-    putchar(in);
-}
-
-void recursivePrint(node *lastIn) {
-    if (lastIn->prev != NULL) {
-        putchar(lastIn->c);
-        recursivePrint(lastIn->prev);
-    } else {
-        putchar(lastIn->c);
-        putchar('\n');
-    }
-    free(lastIn);
 }
 
 /* ITERATIVE SOLUTION */
 
-node *iterativeIn(node *prev) {
+void iterative() {
+    char stack[100];
     char in = getchar();
+    int i = 0;
     while (in != '\n') {
-        node *newNode = malloc(sizeof(node));
-        newNode->c = in;
-        newNode->prev = prev;
-        prev = newNode;
+        stack[i] = in;
+        i++;
         in = getchar();
     }
-    return prev;
-}
 
-void iterativePrint(node *lastIn) {
-    while (lastIn != NULL) {
-        putchar(lastIn->c);
-        lastIn = lastIn->prev;
+    for(int j = i - 1; j >= 0; j--){
+        putchar(stack[j]);
     }
-    putchar('\n');
 }
 
 
 int main() {
-    recursiveIn();
+    recursive();
+    putchar("\n");
+    iterative();
 }
 
 
