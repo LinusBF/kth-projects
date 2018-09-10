@@ -12,7 +12,7 @@
 void recursive() {
     char in = getchar();
     if (in != '\n') {
-        recursiveIn();
+        recursive();
         putchar(in);
     }
 }
@@ -37,7 +37,7 @@ void iterative() {
 
 int main() {
     recursive();
-    putchar("\n");
+    putchar('\n');
     iterative();
 }
 
