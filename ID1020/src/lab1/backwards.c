@@ -14,16 +14,12 @@ typedef struct node {
 
 /* RECURSIVE SOLUTION */
 
-node *recursiveIn(node *prev) {
+void recursiveIn() {
     char in = getchar();
     if (in != '\n') {
-        node *newNode = malloc(sizeof(node));
-        newNode->c = in;
-        newNode->prev = prev;
-        return recursiveIn(newNode);
+        recursiveIn();
+        putchar(in);
     }
-
-    return prev;
 }
 
 void recursivePrint(node *lastIn) {
@@ -61,10 +57,7 @@ void iterativePrint(node *lastIn) {
 
 
 int main() {
-    node *recursiveInput = recursiveIn(NULL);
-    recursivePrint(recursiveInput);
-    node *iterateInput = iterativeIn(NULL);
-    iterativePrint(iterateInput);
+    recursiveIn();
 }
 
 
