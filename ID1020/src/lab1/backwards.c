@@ -39,6 +39,7 @@ int main() {
     recursive();
     putchar('\n');
     iterative();
+    putchar('\n');
 }
 
 
