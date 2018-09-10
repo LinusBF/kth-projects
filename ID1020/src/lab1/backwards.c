@@ -18,8 +18,8 @@ void recursiveIn() {
     char in = getchar();
     if (in != '\n') {
         recursiveIn();
-        putchar(in);
     }
+    putchar(in);
 }
 
 void recursivePrint(node *lastIn) {
