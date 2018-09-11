@@ -49,10 +49,12 @@ public class LinkedQueue<Item> implements Iterable<Item> {
         return i;
     }
 
-    private class ListIterator implements Iterator<Item>
+    private class NodeIterator implements Iterator<Item>
     {
         private Node current = first;
         public boolean hasNext()
+        { return current != null; }
+        public boolean hasPrevious()
         { return current != null; }
         public void remove() { }
         public Item next()
@@ -61,7 +63,7 @@ public class LinkedQueue<Item> implements Iterable<Item> {
             current = current.next;
             return i;
         }
-        public Item prev(){
+        public Item previous(){
             Item i = current.item;
             current = current.prev;
             return i;
@@ -70,6 +72,10 @@ public class LinkedQueue<Item> implements Iterable<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return new ListIterator();
+        return new NodeIterator();
+    }
+
+    public static void main(String[] args) {
+        LinkedQueue queue = new LinkedQueue();
     }
 }
