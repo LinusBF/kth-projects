@@ -1,7 +1,7 @@
 /*
  * Lab 1 - Assignment 3
  *
- * Created by Linus on 2018-09-09.
+ * Created by Linus Bein Fahlander on 2018-09-09.
  *
  * This program contains a FIFO queue that implements a double linked list
  */

@@ -1,7 +1,7 @@
 /*
  * Lab 1 - Assignment 2
  *
- * Created by Linus on 2018-09-09.
+ * Created by Linus Bein Fahlander on 2018-09-09.
  *
  * This program reads a text string and prints it backwards
  * This is done twice when run, once recursively and once iteratively

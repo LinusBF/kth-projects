@@ -1,7 +1,7 @@
 /*
  * Lab 1 - Assignment 5
  *
- * Created by Linus on 2018-09-12.
+ * Created by Linus Bein Fahlander on 2018-09-12.
  *
  * This program contains a LIFO queue that supports removing the n-th item in the queue
  */

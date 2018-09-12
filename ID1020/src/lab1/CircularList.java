@@ -1,7 +1,7 @@
 /*
  * Lab 1 - Assignment 4
  *
- * Created by Linus on 2018-09-10.
+ * Created by Linus Bein Fahlander on 2018-09-10.
  *
  * This program contains a circular linked list that supports adding and removing items
  * from both the front and the back of the queue

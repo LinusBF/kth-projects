@@ -1,7 +1,7 @@
 /*
  * Lab 1 - Assignment 6
  *
- * Created by Linus on 2018-09-12.
+ * Created by Linus Bein Fahlander on 2018-09-12.
  *
  * This program checks the parentheses balance in a text
  */
