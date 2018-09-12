@@ -20,7 +20,7 @@ public class CircularList<Item> implements Iterable<Item> {
 
     public int size(){return this.N;}
 
-    public void enqueueStart(Item i) {
+    public void enqueue(Item i) {
         if(this.isEmpty()){
             this.first = new Node();
             this.first.item = i;
@@ -33,9 +33,10 @@ public class CircularList<Item> implements Iterable<Item> {
             this.last.next = this.first;
             oldLast.next = this.last;
         }
+        this.N++;
     }
 
-    public void enqueueEnd(Item i) {
+    public void enqueueInverse(Item i) {
         if(this.isEmpty()){
             this.first = new Node();
             this.first.item = i;
@@ -48,9 +49,10 @@ public class CircularList<Item> implements Iterable<Item> {
             this.first.next = oldFirst;
             this.last.next = this.first;
         }
+        this.N++;
     }
 
-    public Item dequeueFirst() {
+    public Item dequeue() {
         if(this.isEmpty()) return null;
         Item i = this.first.item;
         if(this.first.next == this.first){
@@ -65,7 +67,7 @@ public class CircularList<Item> implements Iterable<Item> {
         return i;
     }
 
-    public Item dequeueLast() {
+    public Item dequeueInverse() {
         if(this.isEmpty()) return null;
         Item i = this.last.item;
         if(this.first.next == this.first){
@@ -111,18 +113,32 @@ public class CircularList<Item> implements Iterable<Item> {
         return new NodeIterator();
     }
 
+    @Override
+    public String toString(){
+        String s = "[" + this.first.item + "], ";
+        Node temp = this.first.next;
+        while (!temp.equals(this.first)){
+            s += "[" + temp.item + "], ";
+            temp = temp.next;
+        }
+        return s.substring(0, s.length() - 2);
+    }
+
     public static void main(String[] args) {
-        String test1 = "Test1";
+        String test1 = "1";
         Integer test2 = 9;
         ArrayList<Integer> test3 = new ArrayList<>();
         test3.add(1);
         test3.add(2);
         CircularList list = new CircularList();
-        list.enqueueStart(test1);
-        list.enqueueStart(test2);
-        list.enqueueStart(test3);
-        System.out.println(list.dequeueFirst().equals(test1));
-        System.out.println(list.dequeueFirst().equals(test2));
-        System.out.println(list.dequeueFirst().equals(test3));
+        list.enqueue(1);
+        list.enqueue(2);
+        list.enqueueInverse(3);
+        list.enqueue(4);
+        System.out.println(list);
+        list.dequeue();
+        System.out.println(list);
+        list.dequeueInverse();
+        System.out.println(list);
     }
 }
