@@ -19,26 +19,40 @@ void recursive() {
 
 /* ITERATIVE SOLUTION */
 
+typedef struct node {
+    char c;
+    struct node *prev;
+} node;
+
 void iterative() {
-    char stack[100];
+    //Input
     char in = getchar();
-    int i = 0;
+    Node prev = NULL;
     while (in != '\n') {
-        stack[i] = in;
-        i++;
+        node *newNode = malloc(sizeof(node));
+        newNode->c = in;
+        newNode->prev = prev;
+        prev = newNode;
         in = getchar();
     }
-
-    for(int j = i - 1; j >= 0; j--){
-        putchar(stack[j]);
+    //Output
+    Node lastIn = prev;
+    while (lastIn != NULL) {
+        putchar(lastIn->c);
+        lastIn = lastIn->prev;
     }
+    putchar('\n');
 }
 
 
 int main() {
+    printf("Your input:\n");
     recursive();
+    printf("Your input has been reversed recursively\n");
     putchar('\n');
+    printf("Your input:\n");
     iterative();
+    printf("Your input has been reversed iteratively\n");
     putchar('\n');
 }
 
