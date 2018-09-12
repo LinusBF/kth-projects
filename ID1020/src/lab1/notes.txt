@@ -1,0 +1,2 @@
+javac -d out -cp ".;E:\kth-projects\ID1020\src\lab1\*" lab1/BalanceFilter.java
+
