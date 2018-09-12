@@ -76,12 +76,12 @@ public class BalanceFilter {
         return Arrays.asList(rightParans).contains(c);
     }
 
-    private boolean rightParanIsCorrect(Character c, BalanceStack stack) {
+    private boolean rightParanIsCorrect(Character c, BalanceStack<Character> stack) {
         return this.getMatchingParan(c) == stack.peek();
     }
 
     public boolean checkStringBalance(String input) {
-        BalanceStack stack = new BalanceStack();
+        BalanceStack<Character> stack = new BalanceStack<>();
         boolean balanced = true;
         for (int i = 0; i < input.length(); i++){
             Character current = input.charAt(i);
