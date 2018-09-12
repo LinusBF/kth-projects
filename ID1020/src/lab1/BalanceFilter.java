@@ -1,7 +1,6 @@
 package lab1;
 
 import java.util.Arrays;
-import java.util.Iterator;
 
 /**
  * Created by Linus on 2018-09-12.
@@ -104,10 +103,22 @@ public class BalanceFilter {
     public static void main(String[] args) {
         BalanceFilter bf = new BalanceFilter();
 
+        if(args.length > 0) {
+            System.out.println("Your input is " + (bf.checkStringBalance(args[1]) ? "balanced!" : "not balanced!"));
+        }
+        StringBuilder fileInput = new StringBuilder();
+        while(!StdIn.isEmpty()){
+            fileInput.append(StdIn.readLine());
+        }
+
+        if(fileInput.length() > 0){
+            System.out.println("Your file is " + (bf.checkStringBalance(fileInput.toString()) ? "balanced!" : "not balanced!"));
+        }
+
         String correctTest = "[{[()()]()}]";
         String correctWithText = "[this {is} a (generic) [test{case}]]";
         String incorrectTest = "[[]{(})]";
-        System.out.println("Unit test ran with results:");
+        System.out.println("\n\n\nUnit tests ran with results:");
         System.out.println(bf.checkStringBalance(correctTest));
         System.out.println(bf.checkStringBalance(correctWithText));
         System.out.println(!bf.checkStringBalance(incorrectTest));
