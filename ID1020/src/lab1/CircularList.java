@@ -125,11 +125,6 @@ public class CircularList<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        String test1 = "1";
-        Integer test2 = 9;
-        ArrayList<Integer> test3 = new ArrayList<>();
-        test3.add(1);
-        test3.add(2);
         CircularList list = new CircularList();
         list.enqueue(1);
         list.enqueue(2);
