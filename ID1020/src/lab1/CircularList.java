@@ -1,10 +1,19 @@
+/*
+ * Lab 1 - Assignment 4
+ *
+ * Created by Linus on 2018-09-10.
+ *
+ * This program contains a circular linked list that supports adding and removing items
+ * from both the front and the back of the queue
+ */
+
 package lab1;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by Linus Bein Fahlander on 2018-09-10.
+ * An iterable circular linked list that supports pushing and popping
+ * items from the top and bottom of the list.
  */
 public class CircularList<Item> implements Iterable<Item> {
     private Node first;
@@ -20,7 +29,11 @@ public class CircularList<Item> implements Iterable<Item> {
 
     public int size(){return this.N;}
 
-    public void enqueue(Item i) {
+    /**
+     * Pushes an item to the back of the list.
+     * @param i Item to add to the list
+     */
+    public void pushBack(Item i) {
         if(this.isEmpty()){
             this.first = new Node();
             this.first.item = i;
@@ -36,7 +49,11 @@ public class CircularList<Item> implements Iterable<Item> {
         this.N++;
     }
 
-    public void enqueueInverse(Item i) {
+    /**
+     * Pushes an item to the front of the list.
+     * @param i Item to add to the list
+     */
+    public void pushFront(Item i) {
         if(this.isEmpty()){
             this.first = new Node();
             this.first.item = i;
@@ -52,7 +69,11 @@ public class CircularList<Item> implements Iterable<Item> {
         this.N++;
     }
 
-    public Item dequeue() {
+    /**
+     * Returns an item from the front of the list, removing it from the list.
+     * @return Item The item that was at the front of the list
+     */
+    public Item popFront() {
         if(this.isEmpty()) return null;
         Item i = this.first.item;
         if(this.first.next == this.first){
@@ -67,7 +88,11 @@ public class CircularList<Item> implements Iterable<Item> {
         return i;
     }
 
-    public Item dequeueInverse() {
+    /**
+     * Returns an item from the back of the list, removing it from the list.
+     * @return Item The item that was at the back of the list
+     */
+    public Item popBack() {
         if(this.isEmpty()) return null;
         Item i = this.last.item;
         if(this.first.next == this.first){
@@ -91,19 +116,14 @@ public class CircularList<Item> implements Iterable<Item> {
     private class NodeIterator implements Iterator<Item>
     {
         private Node current = first;
+
         public boolean hasNext()
-        { return current != null; }
-        public boolean hasPrevious()
         { return current != null; }
         public void remove() { }
         public Item next()
         {
             Item i = current.item;
             current = current.next;
-            return i;
-        }
-        public Item previous(){
-            Item i = current.item;
             return i;
         }
     }
@@ -125,15 +145,40 @@ public class CircularList<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
+        /*Unit test
+
+            A list will have the following items put into it:
+                - 1 and 2 pushed in order to the back of the list
+                - 3 will be pushed to the front of the list (in front of 1)
+                - 4 and 5 will be pushed to the back of the list (behind of 2)
+            The test is considered a success if:
+                - The first two items popped from the front of the list is 3 and 1
+                - The first two items popped from the back of the list is 5 and 4
+                - The size of the queue is 1 after all removals have been made
+
+            After the setup the list will look like (front --> back)
+            [3], [1], [2], [4], [5]
+            During the test it will look like the following:
+            [1], [2], [4], [5]
+            [2], [4], [5]
+            [2], [4]
+            [2]
+        */
         CircularList list = new CircularList();
-        list.enqueue(1);
-        list.enqueue(2);
-        list.enqueueInverse(3);
-        list.enqueue(4);
+        list.pushBack(1);
+        list.pushBack(2);
+        list.pushFront(3);
+        list.pushBack(4);
+        list.pushBack(5);
         System.out.println(list);
-        list.dequeue();
+        System.out.println(list.popFront().equals(3));
         System.out.println(list);
-        list.dequeueInverse();
+        System.out.println(list.popFront().equals(1));
         System.out.println(list);
+        System.out.println(list.popBack().equals(5));
+        System.out.println(list);
+        System.out.println(list.popBack().equals(4));
+        System.out.println(list);
+        System.out.println(list.size() == 1);
     }
 }

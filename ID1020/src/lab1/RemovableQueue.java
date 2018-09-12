@@ -1,10 +1,17 @@
+/*
+ * Lab 1 - Assignment 5
+ *
+ * Created by Linus on 2018-09-12.
+ *
+ * This program contains a LIFO queue that supports removing the n-th item in the queue
+ */
+
 package lab1;
 
 import java.util.Iterator;
 
 /**
- * Created by Linus on 2018-09-12.
- * LIFO Queue
+ * An iterable LIFO queue that supports removing the n-th item in the queue
  */
 public class RemovableQueue<Item> implements Iterable<Item> {
     private Node first;
@@ -40,6 +47,18 @@ public class RemovableQueue<Item> implements Iterable<Item> {
         return i;
     }
 
+    /**
+     * This function will "jump" the nodes in the queue until the
+     * supplied index is reached. During the jumping, the function
+     * keeps track of the node visited during the previous loop and
+     * will used that node to link the queue together again after the
+     * desired element is removed. This is done by setting the previous
+     * node's next reference to the next reference in the node that will
+     * be deleted.
+     *
+     * @param index The index of the Item to remove from the queue
+     * @return Boolean | True if the element was successfully removed
+     */
     public boolean removeAtIndex(Integer index) {
         if(index < 1) return false;
         if(index == 1) {

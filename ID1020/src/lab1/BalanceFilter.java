@@ -1,9 +1,16 @@
+/*
+ * Lab 1 - Assignment 6
+ *
+ * Created by Linus on 2018-09-12.
+ *
+ * This program checks the parentheses balance in a text
+ */
+
 package lab1;
 
 import java.util.Arrays;
 
 /**
- * Created by Linus on 2018-09-12.
  *
  * This class checks if a string is balanced or not.
  * It utilizes a stack to perform the balance check.
