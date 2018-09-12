@@ -4,10 +4,22 @@ import java.util.Arrays;
 
 /**
  * Created by Linus on 2018-09-12.
- * Based on a Stack pattern
+ *
+ * This class checks if a string is balanced or not.
+ * It utilizes a stack to perform the balance check.
+ * Every left parentheses is pushed to the stack.
+ * When a right parentheses is discovered, it checks if the parentheses
+ * matches the one on top of the stack, if not the string is not balanced
+ * and the class returns false.
+ *
  */
 public class BalanceFilter {
-    private class BalanceStack<Item> {
+    /**
+     * A basic stack implementation with a peek function to check
+     * the top value of the stack without removing it.
+     * @param <Item>
+     */
+    private class BalanceStack<Item> { // Item could be specified as Character
         private Node current;
         private int N;
 
@@ -16,7 +28,7 @@ public class BalanceFilter {
             private Item item;
         }
 
-        public boolean isEmpty() {
+        boolean isEmpty() {
             return this.current == null;
         }
 
@@ -24,7 +36,7 @@ public class BalanceFilter {
             return this.N;
         }
 
-        public void push(Item i) {
+        void push(Item i) {
             if (this.isEmpty()) {
                 this.current = new Node();
                 this.current.item = i;
@@ -37,7 +49,7 @@ public class BalanceFilter {
             this.N++;
         }
 
-        public Item pop() {
+        Item pop() {
             if (this.isEmpty()) return null;
             Item i = this.current.item;
             this.current = current.next;
@@ -45,7 +57,7 @@ public class BalanceFilter {
             return i;
         }
 
-        public Item peek() {
+        Item peek() {
             return this.current.item;
         }
 
@@ -61,25 +73,59 @@ public class BalanceFilter {
         }
     }
 
+    // A static storage for the different parentheses supported
     private static Character[] leftParans = {'(', '[', '{'};
     private static Character[] rightParans = {')', ']', '}'};
 
+    /**
+     * Returns the matching parentheses to a supplied right parentheses
+     *
+     * @param right The right parentheses to find a partner to.
+     * @return The partner parentheses to the parameter character
+     */
     private Character getMatchingParan(Character right) {
         return leftParans[Arrays.asList(rightParans).indexOf(right)];
     }
 
+    /**
+     * Checks if a character is a left parentheses
+     *
+     * @param c A character from a string
+     * @return Boolean | True if the character is one of the parentheses in 'leftParans'
+     */
     private boolean isLeftParan(Character c){
         return Arrays.asList(leftParans).contains(c);
     }
 
+    /**
+     * Checks if a character is a right parentheses
+     *
+     * @param c A character from a string
+     * @return Boolean | True if the character is one of the parentheses in 'rightParans'
+     */
     private boolean isRightParan(Character c){
         return Arrays.asList(rightParans).contains(c);
     }
 
+    /**
+     * Checks if the parentheses on top of the supplied stack is matching
+     * the supplied parentheses
+     *
+     * @param c The right parentheses to check
+     * @param stack The stack used during balance checking
+     * @return Boolean | True if the two parentheses are matching
+     */
     private boolean rightParanIsCorrect(Character c, BalanceStack<Character> stack) {
         return this.getMatchingParan(c) == stack.peek();
     }
 
+    /**
+     * This method is responsible for the abstracted logic of checking
+     * if a string is balanced or not.
+     *
+     * @param input The string to check for balance
+     * @return Boolean | True if input string is balanced
+     */
     public boolean checkStringBalance(String input) {
         BalanceStack<Character> stack = new BalanceStack<>();
         boolean balanced = true;
@@ -103,9 +149,27 @@ public class BalanceFilter {
     public static void main(String[] args) {
         BalanceFilter bf = new BalanceFilter();
 
+        /*
+        * Unit tests
+        *   Tests the balance results of the following cases:
+        *   Two balanced strings, one with and one without other text
+        *   One imbalanced string
+        */
+        String correctTest = "[{[()()]()}]";
+        String correctWithText = "[this {is} a (generic) [test{case}]]";
+        String incorrectTest = "[[]{(})]";
+        System.out.println("Unit tests ran with results:");
+        System.out.println(bf.checkStringBalance(correctTest));
+        System.out.println(bf.checkStringBalance(correctWithText));
+        System.out.println(!bf.checkStringBalance(incorrectTest));
+        System.out.println("\n\n\n");
+
+        // Support for command line argument
         if(args.length > 0) {
             System.out.println("Your input is " + (bf.checkStringBalance(args[1]) ? "balanced!" : "not balanced!"));
         }
+
+        //Support for text file piping
         StringBuilder fileInput = new StringBuilder();
         while(!StdIn.isEmpty()){
             fileInput.append(StdIn.readLine());
@@ -114,13 +178,5 @@ public class BalanceFilter {
         if(fileInput.length() > 0){
             System.out.println("Your file is " + (bf.checkStringBalance(fileInput.toString()) ? "balanced!" : "not balanced!"));
         }
-
-        String correctTest = "[{[()()]()}]";
-        String correctWithText = "[this {is} a (generic) [test{case}]]";
-        String incorrectTest = "[[]{(})]";
-        System.out.println("\n\n\nUnit tests ran with results:");
-        System.out.println(bf.checkStringBalance(correctTest));
-        System.out.println(bf.checkStringBalance(correctWithText));
-        System.out.println(!bf.checkStringBalance(incorrectTest));
     }
 }
