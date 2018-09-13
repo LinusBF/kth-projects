@@ -50,7 +50,7 @@ typedef struct node {
 void iterative() {
     //Input
     char in = getchar();
-    Node prev = NULL;
+    node prev = NULL;
     while (in != '\n') {
         node *newNode = malloc(sizeof(node));
         newNode->c = in;
@@ -59,7 +59,7 @@ void iterative() {
         in = getchar();
     }
     //Output
-    Node lastIn = prev;
+    node lastIn = prev;
     while (lastIn != NULL) {
         putchar(lastIn->c);
         lastIn = lastIn->prev;
