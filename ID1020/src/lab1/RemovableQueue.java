@@ -48,8 +48,8 @@ public class RemovableQueue<Item> implements Iterable<Item> {
     }
 
     /**
-     * This function will "jump" the nodes in the queue until the
-     * supplied index is reached. During the jumping, the function
+     * This function will traverse the nodes in the queue until the
+     * supplied index is reached. During the traversing, the function
      * keeps track of the node visited during the previous loop and
      * will used that node to link the queue together again after the
      * desired element is removed. This is done by setting the previous
