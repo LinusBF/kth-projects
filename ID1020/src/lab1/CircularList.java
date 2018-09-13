@@ -170,15 +170,10 @@ public class CircularList<Item> implements Iterable<Item> {
         list.pushFront(3);
         list.pushBack(4);
         list.pushBack(5);
-        System.out.println(list);
         System.out.println(list.popFront().equals(3));
-        System.out.println(list);
         System.out.println(list.popFront().equals(1));
-        System.out.println(list);
         System.out.println(list.popBack().equals(5));
-        System.out.println(list);
         System.out.println(list.popBack().equals(4));
-        System.out.println(list);
         System.out.println(list.size() == 1);
     }
 }
