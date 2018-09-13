@@ -115,7 +115,7 @@ public class RemovableQueue<Item> implements Iterable<Item> {
                 - The size of the queue is 2 after removal
                 - The next two items returned by dequeue is 2 and 4, in that order
         */
-        RemovableQueue list = new RemovableQueue();
+        RemovableQueue<Integer> list = new RemovableQueue<>();
         list.enqueue(5);
         list.enqueue(4);
         list.enqueue(3);

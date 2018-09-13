@@ -164,7 +164,7 @@ public class CircularList<Item> implements Iterable<Item> {
             [2], [4]
             [2]
         */
-        CircularList list = new CircularList();
+        CircularList<Integer> list = new CircularList<>();
         list.pushBack(1);
         list.pushBack(2);
         list.pushFront(3);
