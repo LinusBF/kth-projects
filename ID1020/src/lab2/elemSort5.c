@@ -16,6 +16,9 @@ void swap(int *list, int i, int j){
 }
 
 void negativeSort(int *list, int length){
+    // Invariant: A[0..j-1] contains the same elements as
+    // the original subarray A[0..j-1], but all values
+    // less than 0 are at the start of the array.
     for(int i = 0; i < length - 1; i++){
         for(int j = i + 1; j < length; j++){
             if(list[i] >= 0 && list[j] < 0){
