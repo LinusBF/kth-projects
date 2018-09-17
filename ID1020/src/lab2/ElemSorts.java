@@ -1,12 +1,70 @@
 package lab2;
 
-import java.util.Scanner;
+import java.util.Iterator;
 
 /**
  * Created by Linus Bein Fahlander on 2018-09-16.
  */
 @SuppressWarnings("Duplicates")
 public class ElemSorts {
+    private static class SortedLinkedList {
+        private Node first;
+        private int N;
+
+        private class Node {
+            private Node next;
+            private Integer item;
+        }
+
+        public boolean isEmpty() {
+            return this.first == null;
+        }
+
+        public int size() {
+            return this.N;
+        }
+
+        public void enqueue(Integer i) {
+            if (this.isEmpty()) {
+                this.first = new Node();
+                this.first.item = i;
+            } else {
+                Node current = this.first;
+                Node beforeCurrent = null;
+                while(current != null && current.item <= i){
+                    beforeCurrent = current;
+                    current = current.next;
+                }
+                Node newNode = new Node();
+                newNode.item = i;
+                if(beforeCurrent != null) beforeCurrent.next = newNode;
+                else this.first = newNode;
+                newNode.next = current;
+            }
+            this.N++;
+            System.out.println(this);
+        }
+
+        public Integer dequeue() {
+            if (this.isEmpty()) return null;
+            Integer i = this.first.item;
+            this.first = first.next; // Does garbage collection remove old first?
+            this.N--;
+            return i;
+        }
+
+        @Override
+        public String toString() {
+            String s = "[" + this.first.item + "], ";
+            Node temp = this.first.next;
+            while (temp != null) {
+                s += "[" + temp.item + "], ";
+                temp = temp.next;
+            }
+            return s.substring(0, s.length() - 2);
+        }
+    }
+
     public static void sort1(Comparable[] list){
         int max = list.length;
         for(int i = 0; i < max; i++){
@@ -120,8 +178,19 @@ public class ElemSorts {
 
         System.out.println("\nAssignment 4:\n");
 
-        String[] testList4 = {"E", "X", "A", "M", "P", "L", "E"};
+        Integer[] testList4 = {1, 2, 4, 3, 5, 0};
         print(testList4);
         amountOfInversions(testList4);
+
+        System.out.println("\nAssignment 7:\n");
+
+        SortedLinkedList testList5 = new SortedLinkedList();
+
+        System.out.println("Adding integers in the following order: 3, 1, 4, 2, 5:");
+        testList5.enqueue(3);
+        testList5.enqueue(1);
+        testList5.enqueue(4);
+        testList5.enqueue(2);
+        testList5.enqueue(5);
     }
 }
