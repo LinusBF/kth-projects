@@ -1,0 +1,12 @@
+8.
+	2 swaps
+	7 comparisons
+9.
+	i = 4
+	alg = insertion
+10.
+	a) Insertion
+	b) Insertion
+	c) Selection
+11.
+	h = 2, 3 and 5 because those can be ran again without any swaps.
