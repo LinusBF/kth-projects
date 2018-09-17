@@ -9,25 +9,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void negativeSort(int *list, int length){
-    int i = 0;
-    for(i; i < length; i++){
-        if(list[i] >= 0 && list[i + 1] < 0){
-            swap(list, i, i + 1);
-        }
-    }
-}
-
 void swap(int *list, int i, int j){
     int temp = list[i];
     list[i] = list[j];
     list[j] = temp;
 }
 
+void negativeSort(int *list, int length){
+    for(int i = 0; i < length - 1; i++){
+        for(int j = i + 1; j < length; j++){
+            if(list[i] >= 0 && list[j] < 0){
+                swap(list, i, j);
+            }
+        }
+    }
+}
+
 int main(){
-    int[] testList = [1,-2,3,-4,5,-6];
-    negativeSort(testList, sizeof(testList)/sizeof(testList[0]));
+    int testList[] = {1,-2,3,-4,5,-6};
+    negativeSort(testList, 6);
     for(int i = 0; i < 6; i++){
-        printf("%d", testList[i]);
+        printf("%d\n", testList[i]);
     }
 }
