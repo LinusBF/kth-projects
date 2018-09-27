@@ -114,15 +114,16 @@ public class FrequencyCounter {
         }
 
         ArrayList<Tuple> maxList = new ArrayList<>();
+        Compare c = new Compare();
         for (String word : Store.keys()) {
             maxList.add(new Tuple(word, Store.get(word)));
-            maxList.sort(new Compare());
+            maxList.sort(c);
             if(maxList.size() > (n + amount)){
                 maxList.remove(0);
             }
         }
 
-        for (int i = n; n < (n + amount); i++){
+        for (int i = 0; i < amount; i++){
             System.out.println(maxList.get(i));
         }
     }
