@@ -26,8 +26,6 @@ package lab3;
  *
  ******************************************************************************/
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -47,12 +45,12 @@ public class FrequencyCounter {
     // Do not instantiate.
     private FrequencyCounter() { }
 
-    public static void freqCount(GenericStore<String, Integer> Store, Scanner scan) {
+    static void freqCount(GenericStore<String, Integer> Store, Scanner scan) {
         int distinct = 0, words = 0;
 
         // compute frequency counts
         while (scan.hasNext()) {
-            String key = scan.next();
+            String key = scan.next().toLowerCase();
             words++;
             if (Store.contains(key)) {
                 Store.put(key, Store.get(key) + 1);
@@ -77,11 +75,11 @@ public class FrequencyCounter {
         System.out.println("");
     }
 
-    public static void freqFromTo(GenericStore<String, Integer> Store, Scanner scan, Integer n, Integer amount) {
-        class Tuple {
+    static void freqFromTo(GenericStore<String, Integer> Store, Scanner scan, Integer fromIndex, Integer amount) {
+        class Tuple implements Comparable<Tuple> {
             String s;
             Integer i;
-            Tuple(String s, Integer i) {
+            private Tuple(String s, Integer i) {
                 this.s = s;
                 this.i = i;
             }
@@ -90,21 +88,15 @@ public class FrequencyCounter {
             public String toString(){
                 return s + ": " + i;
             }
-        }
 
-        class Compare implements Comparator<Tuple>{
             @Override
-            public int compare(Tuple a, Tuple b) {
-                if(a.i > b.i){
-                    return 1;
-                } else {
-                    return -1;
-                }
+            public int compareTo(Tuple o) {
+                return this.i.compareTo(o.i);
             }
         }
 
         while (scan.hasNext()) {
-            String key = scan.next();
+            String key = scan.next().toLowerCase();
             if (Store.contains(key)) {
                 Store.put(key, Store.get(key) + 1);
             }
@@ -113,18 +105,18 @@ public class FrequencyCounter {
             }
         }
 
-        ArrayList<Tuple> maxList = new ArrayList<>();
-        Compare c = new Compare();
+        SortedLinkedList<Tuple> maxList = new SortedLinkedList<>();
         for (String word : Store.keys()) {
-            maxList.add(new Tuple(word, Store.get(word)));
-            maxList.sort(c);
-            if(maxList.size() > (n + amount)){
-                maxList.remove(0);
+            maxList.enqueue(new Tuple(word, Store.get(word)));
+            if(maxList.size() > (fromIndex + amount)){
+                maxList.dequeue();
             }
         }
 
         for (int i = 0; i < amount; i++){
-            System.out.println(maxList.get(i));
+            System.out.println("The " + ((amount + fromIndex) - (i)) + "th most common word:");
+            System.out.println(maxList.dequeue());
+            System.out.println("");
         }
     }
 

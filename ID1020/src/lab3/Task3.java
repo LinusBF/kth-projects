@@ -12,6 +12,7 @@ public class Task3 {
         Scanner scan =  new Scanner(new FileReader("E:\\kth-projects\\ID1020\\src\\lab3\\filtered_text.txt"));
         BST<String, Integer> BST = new BST<>();
 
+        System.out.println("Printing the 5th to 15th most common words in the text:\n");
         FrequencyCounter.freqFromTo(BST, scan, 5, 10);
     }
 }
