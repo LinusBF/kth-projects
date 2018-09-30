@@ -45,9 +45,11 @@ public class FrequencyCounter {
     // Do not instantiate.
     private FrequencyCounter() { }
 
-    static void freqCount(GenericStore<String, Integer> Store, Scanner scan) {
+    // Returns the execution time to find the max value in the GenericStore
+    static long freqCount(GenericStore<String, Integer> Store, Scanner scan) {
         int distinct = 0, words = 0;
 
+        long start = System.nanoTime();
         // compute frequency counts
         while (scan.hasNext()) {
             String key = scan.next().toLowerCase();
@@ -68,11 +70,14 @@ public class FrequencyCounter {
             if (Store.get(word) > Store.get(max))
                 max = word;
         }
+        long end = System.nanoTime();
 
         System.out.println(max + " " + Store.get(max));
         System.out.println("distinct = " + distinct);
         System.out.println("words    = " + words);
         System.out.println("");
+
+        return (end - start);
     }
 
     static void freqFromTo(GenericStore<String, Integer> Store, Scanner scan, Integer fromIndex, Integer amount) {
