@@ -8,9 +8,9 @@ import java.io.IOException;
 /**
  * Created by Linus Bein Fahlander on 2018-09-26.
  */
-public class Filter {
+public class Task1 {
     BufferedReader br;
-    public Filter() throws FileNotFoundException {
+    public Task1() throws FileNotFoundException {
         this.br = new BufferedReader(new FileReader("C:\\Projects\\kth-projects\\ID1020\\src\\lab3\\the_text.txt"));
     }
 
@@ -32,7 +32,7 @@ public class Filter {
 
     public static void main(String[] args) {
         try{
-            Filter f = new Filter();
+            Task1 f = new Task1();
             System.out.println(f.getText());
         } catch (Exception e){
             e.printStackTrace();
