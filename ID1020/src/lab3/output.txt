@@ -1,0 +1,188 @@
+Assignment 2
+
+* Test with N = 1410
+
+Scanning the first 141000 words
+the 8213
+distinct = 9901
+words    = 141000
+
+the 8213
+distinct = 9901
+words    = 141000
+
+Symbol Table: 282.380889ms
+Binary Tree: 134.353312ms
+
+* Test with N = 3
+
+Scanning the first 300 words
+chapter 35
+distinct = 152
+words    = 300
+
+chapter 35
+distinct = 152
+words    = 300
+
+Symbol Table: 5.708384ms
+Binary Tree: 2.99867ms
+
+
+
+
+Assignment 3
+Input is N=15 and M=10 where N is starting index and M is nr of elements to check
+
+Printing the 16th to the 25th  most common words in the text:
+
+The 25th most common word:
+have: 749
+
+The 24th most common word:
+be: 785
+
+The 23th most common word:
+is: 853
+
+The 22th most common word:
+not: 877
+
+The 21th most common word:
+on: 938
+
+The 20th most common word:
+him: 976
+
+The 19th most common word:
+for: 987
+
+The 18th most common word:
+her: 1045
+
+The 17th most common word:
+at: 1050
+
+The 16th most common word:
+as: 1174
+
+
+
+
+Assignment 4
+
+Red Black Binary Tree: 108ms
+Binary Tree: 68ms
+
+
+
+
+Assignment 5
+
+Bucket 1 has 99 elements
+Bucket 2 has 117 elements
+Bucket 3 has 107 elements
+Bucket 4 has 103 elements
+Bucket 5 has 99 elements
+Bucket 6 has 100 elements
+Bucket 7 has 105 elements
+Bucket 8 has 98 elements
+Bucket 9 has 103 elements
+Bucket 10 has 102 elements
+Bucket 11 has 98 elements
+Bucket 12 has 113 elements
+Bucket 13 has 115 elements
+Bucket 14 has 98 elements
+Bucket 15 has 110 elements
+Bucket 16 has 106 elements
+Bucket 17 has 88 elements
+Bucket 18 has 91 elements
+Bucket 19 has 102 elements
+Bucket 20 has 104 elements
+Bucket 21 has 124 elements
+Bucket 22 has 102 elements
+Bucket 23 has 110 elements
+Bucket 24 has 105 elements
+Bucket 25 has 96 elements
+Bucket 26 has 98 elements
+Bucket 27 has 108 elements
+Bucket 28 has 103 elements
+Bucket 29 has 101 elements
+Bucket 30 has 122 elements
+Bucket 31 has 98 elements
+Bucket 32 has 92 elements
+Bucket 33 has 83 elements
+Bucket 34 has 105 elements
+Bucket 35 has 98 elements
+Bucket 36 has 97 elements
+Bucket 37 has 84 elements
+Bucket 38 has 99 elements
+Bucket 39 has 111 elements
+Bucket 40 has 95 elements
+Bucket 41 has 91 elements
+Bucket 42 has 89 elements
+Bucket 43 has 83 elements
+Bucket 44 has 92 elements
+Bucket 45 has 104 elements
+Bucket 46 has 104 elements
+Bucket 47 has 108 elements
+Bucket 48 has 120 elements
+Bucket 49 has 107 elements
+Bucket 50 has 100 elements
+Bucket 51 has 89 elements
+Bucket 52 has 103 elements
+Bucket 53 has 107 elements
+Bucket 54 has 101 elements
+Bucket 55 has 87 elements
+Bucket 56 has 122 elements
+Bucket 57 has 93 elements
+Bucket 58 has 105 elements
+Bucket 59 has 110 elements
+Bucket 60 has 120 elements
+Bucket 61 has 101 elements
+Bucket 62 has 103 elements
+Bucket 63 has 93 elements
+Bucket 64 has 89 elements
+Bucket 65 has 91 elements
+Bucket 66 has 109 elements
+Bucket 67 has 124 elements
+Bucket 68 has 111 elements
+Bucket 69 has 105 elements
+Bucket 70 has 102 elements
+Bucket 71 has 94 elements
+Bucket 72 has 102 elements
+Bucket 73 has 114 elements
+Bucket 74 has 112 elements
+Bucket 75 has 87 elements
+Bucket 76 has 106 elements
+Bucket 77 has 95 elements
+Bucket 78 has 99 elements
+Bucket 79 has 111 elements
+Bucket 80 has 107 elements
+Bucket 81 has 107 elements
+Bucket 82 has 108 elements
+Bucket 83 has 98 elements
+Bucket 84 has 134 elements
+Bucket 85 has 106 elements
+Bucket 86 has 121 elements
+Bucket 87 has 97 elements
+Bucket 88 has 106 elements
+Bucket 89 has 100 elements
+Bucket 90 has 105 elements
+Bucket 91 has 98 elements
+Bucket 92 has 98 elements
+Bucket 93 has 103 elements
+Bucket 94 has 94 elements
+Bucket 95 has 87 elements
+Bucket 96 has 118 elements
+Bucket 97 has 87 elements
+
+Biggest difference between two buckets is 51 elements
+
+
+
+
+Assignment 6
+
+The word spectators can be found at char indexes:
+[83081, 85514, 115492, 117287, 120145, 136257, 143084, 145221, 616105]

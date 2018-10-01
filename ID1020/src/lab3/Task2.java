@@ -15,10 +15,14 @@ public class Task2 {
         BinarySearchST<String, Integer> ST = new BinarySearchST<>();
         BST<String, Integer> BST = new BST<>();
 
-        long exeTime1 = FrequencyCounter.freqCount(ST, scan);
-        long exeTime2 = FrequencyCounter.freqCount(BST, scan2);
+        Integer N = (args.length > 0 ? Integer.parseInt(args[0]) : 3);
 
-        System.out.println("Symbol Table: " + (exeTime1 / 1000000));
-        System.out.println("Binary Tree: " + (exeTime2 / 1000000));
+        System.out.println("Scanning the first " + N + "00 words");
+
+        long exeTime1 = FrequencyCounters.freqCount(ST, scan, N);
+        long exeTime2 = FrequencyCounters.freqCount(BST, scan2, N);
+
+        System.out.println("Symbol Table: " + (exeTime1 / 1000000.0) + "ms");
+        System.out.println("Binary Tree: " + (exeTime2 / 1000000.0) + "ms");
     }
 }

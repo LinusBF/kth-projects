@@ -1,8 +1,8 @@
 package lab3;
 
 /******************************************************************************
- *  Compilation:  javac FrequencyCounter.java
- *  Execution:    java FrequencyCounter L < input.txt
+ *  Compilation:  javac FrequencyCounters.java
+ *  Execution:    java FrequencyCounters L < input.txt
  *  Dependencies: ST.java StdIn.java StdOut.java
  *  Data files:   https://algs4.cs.princeton.edu/31elementary/tnyTale.txt
  *                https://algs4.cs.princeton.edu/31elementary/tale.txt
@@ -14,13 +14,13 @@ package lab3;
  *  the most frequently occurring word that has length greater than
  *  a given threshold.
  *
- *  % java FrequencyCounter 1 < tinyTale.txt
+ *  % java FrequencyCounters 1 < tinyTale.txt
  *  it 10
  *
- *  % java FrequencyCounter 8 < tale.txt
+ *  % java FrequencyCounters 8 < tale.txt
  *  business 122
  *
- *  % java FrequencyCounter 10 < leipzig1M.txt
+ *  % java FrequencyCounters 10 < leipzig1M.txt
  *  government 24763
  *
  *
@@ -29,7 +29,7 @@ package lab3;
 import java.util.Scanner;
 
 /**
- *  The {@code FrequencyCounter} class provides a client for
+ *  The {@code FrequencyCounters} class provides a client for
  *  reading in a sequence of words and printing a word (exceeding
  *  a given length) that occurs most frequently. It is useful as
  *  a test client for various symbol table implementations.
@@ -40,18 +40,18 @@ import java.util.Scanner;
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class FrequencyCounter {
+public class FrequencyCounters {
 
     // Do not instantiate.
-    private FrequencyCounter() { }
+    private FrequencyCounters() { }
 
     // Returns the execution time to find the max value in the GenericStore
-    static long freqCount(GenericStore<String, Integer> Store, Scanner scan) {
+    static long freqCount(GenericStore<String, Integer> Store, Scanner scan, Integer N) {
         int distinct = 0, words = 0;
 
         long start = System.nanoTime();
-        // compute frequency counts
-        while (scan.hasNext()) {
+
+        while (scan.hasNext() && words < 100*N) {
             String key = scan.next().toLowerCase();
             words++;
             if (Store.contains(key)) {
@@ -63,21 +63,45 @@ public class FrequencyCounter {
             }
         }
 
-        // find a key with the highest frequency count
         String max = "";
         Store.put(max, 0);
         for (String word : Store.keys()) {
             if (Store.get(word) > Store.get(max))
                 max = word;
         }
-        long end = System.nanoTime();
 
         System.out.println(max + " " + Store.get(max));
         System.out.println("distinct = " + distinct);
         System.out.println("words    = " + words);
         System.out.println("");
 
-        return (end - start);
+        return System.nanoTime() - start;
+    }
+
+    static long freqCount(GenericStore<String, Integer> Store, Scanner scan) {
+        long time = 0;
+
+        while (scan.hasNext()) {
+            String key = scan.next().toLowerCase();
+            long start = System.nanoTime();
+            if (Store.contains(key)) {
+                Store.put(key, Store.get(key) + 1);
+            }
+            else {
+                Store.put(key, 1);
+            }
+            time += System.nanoTime() - start;
+        }
+        long start = System.nanoTime();
+        String max = "";
+        Store.put(max, 0);
+        for (String word : Store.keys()) {
+            if (Store.get(word) > Store.get(max))
+                max = word;
+        }
+        time += System.nanoTime() - start;
+
+        return time;
     }
 
     static void freqFromTo(GenericStore<String, Integer> Store, Scanner scan, Integer fromIndex, Integer amount) {

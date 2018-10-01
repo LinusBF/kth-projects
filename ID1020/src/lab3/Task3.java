@@ -11,8 +11,9 @@ public class Task3 {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scan =  new Scanner(new FileReader("E:\\kth-projects\\ID1020\\src\\lab3\\filtered_text.txt"));
         BST<String, Integer> BST = new BST<>();
-
-        System.out.println("Printing the 5th to 15th most common words in the text:\n");
-        FrequencyCounter.freqFromTo(BST, scan, 5, 10);
+        Integer N = (args.length > 0 ? Integer.parseInt(args[0]) : 15);
+        Integer M = (args.length > 1 ? Integer.parseInt(args[1]) : 10);
+        System.out.println("Printing the " + (N + 1) + "th to the " + (N + M) + "th " + " most common words in the text:\n");
+        FrequencyCounters.freqFromTo(BST, scan, N, M);
     }
 }

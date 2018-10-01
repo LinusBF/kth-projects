@@ -1,0 +1,12 @@
+4711 and 4713 are the good choices as they have the least amount of dividers.
+This is important because of the way the bucket index is decided, namely with modulus.
+If the chosen size has few divisors then there are more possible results of i mod array_size,
+and as such you get a more even spread.
+
+
+ST => get=log(N), put=0.5N
+BST => get=1.39log(N), put=1.39log(N)
+RBBST => get=log(N), put=log(N)
+
+ST comp BST ~ ST 2x slower
+BST comp RBBST ~ BST 1.4x slower

@@ -15,10 +15,10 @@ public class Task4 {
         RedBlackBST<String, Integer> RBBST = new RedBlackBST<>();
         BST<String, Integer> BST = new BST<>();
 
-        long exeTime1 = FrequencyCounter.freqCount(RBBST, scan);
-        long exeTime2 = FrequencyCounter.freqCount(BST, scan2);
+        long exeTime1 = FrequencyCounters.freqCount(RBBST, scan);
+        long exeTime2 = FrequencyCounters.freqCount(BST, scan2);
 
-        System.out.println("Red Black Binary Tree: " + (exeTime1 / 1000000));
-        System.out.println("Binary Tree: " + (exeTime2 / 1000000));
+        System.out.println("Red Black Binary Tree: " + (exeTime1 / 1000000) + "ms");
+        System.out.println("Binary Tree: " + (exeTime2 / 1000000) + "ms");
     }
 }
