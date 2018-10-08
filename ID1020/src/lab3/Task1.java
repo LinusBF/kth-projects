@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by Linus Bein Fahlander on 2018-09-26.
@@ -11,7 +12,8 @@ import java.io.IOException;
 public class Task1 {
     BufferedReader br;
     public Task1() throws FileNotFoundException {
-        this.br = new BufferedReader(new FileReader("C:\\Projects\\kth-projects\\ID1020\\src\\lab3\\the_text.txt"));
+        URL url = Task1.class.getResource("filtered_text.txt");
+        this.br = new BufferedReader(new FileReader(url.getPath()));
     }
 
     public String getText() throws IOException {

@@ -2,6 +2,7 @@ package lab3;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.Scanner;
 
 /**
@@ -9,7 +10,8 @@ import java.util.Scanner;
  */
 public class Task5 {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner scan =  new Scanner(new FileReader("E:\\kth-projects\\ID1020\\src\\lab3\\filtered_text.txt"));
+        URL url = Task3.class.getResource("filtered_text.txt");
+        Scanner scan =  new Scanner(new FileReader(url.getPath()));
 
         BinarySearchST<String, Integer> ST = new BinarySearchST<>();
 
