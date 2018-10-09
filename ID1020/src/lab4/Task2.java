@@ -8,16 +8,16 @@ import java.util.Scanner;
 /**
  * Created by Linus on 2018-10-09.
  */
-public class Task1 {
+public class Task2 {
     public static void main(String[] args) throws FileNotFoundException {
         String source = (args.length > 1 ? args[0] : "CA");
-        String target = (args.length > 1 ? args[1] : "OK");
-        URL url = Task1.class.getResource("states.txt");
+        String target = (args.length > 1 ? args[1] : "NY");
+        URL url = Task2.class.getResource("states.txt");
         Scanner scan =  new Scanner(new FileReader(url.getPath()));
         Graph g = new Graph(scan);
-        DFS dfs = new DFS(g, source);
+        BFS bfs = new BFS(g, source);
 
-        for(String s : dfs.pathTo(target)){
+        for(String s : bfs.pathTo(target)){
             System.out.print(s + (!s.equals(source) ? " -> " : ""));
         }
     }

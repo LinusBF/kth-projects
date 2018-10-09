@@ -1,39 +1,39 @@
 package lab4;
 
 /**
- * Created by Linus on 2018-10-08.
+ * Created by Linus on 2018-10-09.
  */
-public class DFS {
+public class BFS {
     private ST<String, Boolean> marked;
     private ST<String, String> edgeTo;
     private final String source;
-    private int count;
 
-    public DFS(GenericGraph<String> G, String s){
+    public BFS(GenericGraph<String> G, String s){
         this.marked = new ST<>();
         this.edgeTo = new ST<>();
         this.source = s;
-        this.count = 0;
-        this.dfs(G, s);
+        bfs(G, s);
     }
 
-    private void dfs(GenericGraph<String> G, String v) {
-        this.marked.put(v, true);
-        for (String w : G.adj(v)) {
-            if(!this.marked.contains(w)) this.marked.put(w, false);
-            if (!this.marked.get(w)) {
-                this.edgeTo.put(w, v);
-                dfs(G, w);
+    private void bfs(GenericGraph<String> G, String s){
+        LinkedQueue<String> q = new LinkedQueue<>();
+        this.marked.put(s, true);
+        q.enqueue(s);
+        while (!q.isEmpty()){
+            String v = q.dequeue();
+            for(String w : G.adj(v)){
+                if(!this.marked.contains(w)) this.marked.put(w, false);
+                if(!this.marked.get(w)){
+                    this.edgeTo.put(w, v);
+                    this.marked.put(w, true);
+                    q.enqueue(w);
+                }
             }
         }
     }
 
     public boolean hasPathTo(String v) {
         return this.marked.get(v);
-    }
-
-    public int count() {
-        return count;
     }
 
     public Iterable<String> pathTo(String v){

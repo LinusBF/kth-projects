@@ -13,6 +13,7 @@ public class Graph implements GenericGraph<String>{
     Graph (Scanner s) {
         this.V = 0;
         this.E = 0;
+        this.adj = new ST<>();
         while (s.hasNext()){
             String v = s.next();
             String w = s.next();
@@ -20,7 +21,9 @@ public class Graph implements GenericGraph<String>{
         }
     }
 
-    public int vertices() {return this.V;}
+    public Iterable<String> vertices() {return adj.keys();}
+
+    public int V() {return this.V;}
 
     public int edges() {return this.E;}
 
