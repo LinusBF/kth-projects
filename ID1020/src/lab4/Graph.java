@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by Linus on 2018-10-08.
  */
-public class Graph implements GenericGraph<String>{
+public class Graph implements GenericGraph<String, String>{
     private int V;
     private int E;
     private ST<String, Bag<String>> adj;

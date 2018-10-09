@@ -10,7 +10,7 @@ public class DFS {
     private final String source;
     private int count;
 
-    public DFS(GenericGraph<String> G, String s){
+    public DFS(GenericGraph<String, String> G, String s){
         this.marked = new ST<>();
         this.distanceTo = new ST<>();
         this.edgeTo = new ST<>();
@@ -19,7 +19,7 @@ public class DFS {
         this.dfs(G, s);
     }
 
-    private void dfs(GenericGraph<String> G, String v) {
+    private void dfs(GenericGraph<String, String> G, String v) {
         this.count++;
         this.marked.put(v, true);
         for (String w : G.adj(v)) {

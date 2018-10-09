@@ -8,14 +8,14 @@ public class BFS {
     private ST<String, String> edgeTo;
     private final String source;
 
-    public BFS(GenericGraph<String> G, String s){
+    public BFS(GenericGraph<String, String> G, String s){
         this.marked = new ST<>();
         this.edgeTo = new ST<>();
         this.source = s;
         bfs(G, s);
     }
 
-    private void bfs(GenericGraph<String> G, String s){
+    private void bfs(GenericGraph<String, String> G, String s){
         LinkedQueue<String> q = new LinkedQueue<>();
         this.marked.put(s, true);
         q.enqueue(s);
