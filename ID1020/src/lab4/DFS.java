@@ -5,12 +5,14 @@ package lab4;
  */
 public class DFS {
     private ST<String, Boolean> marked;
+    private ST<String, Integer> distanceTo;
     private ST<String, String> edgeTo;
     private final String source;
     private int count;
 
     public DFS(GenericGraph<String> G, String s){
         this.marked = new ST<>();
+        this.distanceTo = new ST<>();
         this.edgeTo = new ST<>();
         this.source = s;
         this.count = 0;
@@ -18,14 +20,22 @@ public class DFS {
     }
 
     private void dfs(GenericGraph<String> G, String v) {
+        this.count++;
         this.marked.put(v, true);
         for (String w : G.adj(v)) {
             if(!this.marked.contains(w)) this.marked.put(w, false);
+            if(!this.distanceTo.contains(w)) this.distanceTo.put(w, count);
             if (!this.marked.get(w)) {
                 this.edgeTo.put(w, v);
                 dfs(G, w);
             }
+            if(this.count < this.distanceTo.get(w)){
+                this.distanceTo.put(w, this.count);
+                this.edgeTo.put(w, v);
+                dfs(G, w);
+            }
         }
+        this.count--;
     }
 
     public boolean hasPathTo(String v) {
