@@ -23,8 +23,11 @@ public class BFSWeight {
             String v = q.dequeue();
             for(Edge<String, Integer> w : G.adj(v)){
                 if(!this.marked.contains(w.other(v))) this.marked.put(w.other(v), false);
+                if(!this.edgeTo.contains(v)) this.edgeTo.put(v, w);
                 if(!this.marked.get(w.other(v))){
-                    this.edgeTo.put(v, w);
+                    if(w.weight() < this.edgeTo.get(v).weight()){
+                        this.edgeTo.put(v, w);
+                    }
                     this.marked.put(w.other(v), true);
                     q.enqueue(w.other(v));
                 }
@@ -33,7 +36,7 @@ public class BFSWeight {
     }
 
     public boolean hasPathTo(String v) {
-        return (this.marked.get(v) != null ? this.marked.get(v) : false);
+        return this.marked.get(v);
     }
 
     public Iterable<String> pathTo(String v){
