@@ -11,14 +11,12 @@ import java.util.Scanner;
 public class Task3 {
     public static void main(String[] args) throws FileNotFoundException {
         String source = (args.length > 1 ? args[0] : "CA");
-        String target = (args.length > 1 ? args[1] : "NY");
+        String target = (args.length > 1 ? args[1] : "OK");
         URL url = Task3.class.getResource("statesWeighted.txt");
         Scanner scan =  new Scanner(new FileReader(url.getPath()));
         WeightedGraph g = new WeightedGraph(scan);
-        BFSWeight bfs = new BFSWeight(g, source);
+        DFSWeight dfs = new DFSWeight(g, source);
 
-        for(String s : bfs.pathTo(target)){
-            System.out.print(s + (!s.equals(source) ? " -> " : ""));
-        }
+        System.out.println("Distance in summed weight: " + dfs.pathTo(target));
     }
 }

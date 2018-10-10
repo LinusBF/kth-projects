@@ -23,7 +23,7 @@ public class Edge<Item, Weight extends Comparable<Weight>> implements Comparable
     }
 
     public Item other(Item i) {
-        return (i == this.v ? this.w : this.v);
+        return (i.equals(this.v) ? this.w : this.v);
     }
 
     public Edge<Item, Weight> flipped(){
