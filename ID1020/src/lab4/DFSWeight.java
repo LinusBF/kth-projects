@@ -47,17 +47,15 @@ public class DFSWeight {
     public Integer pathTo(String v){
         if(!this.hasPathTo(v)) return null;
         LinkedQueue<String> path = new LinkedQueue<>();
-        Integer distance = 0;
         for(String x = v; !x.equals(this.source); x = edgeTo.get(x)){
             path.enqueue(x);
         }
         path.enqueue(this.source);
-        distance += this.distanceTo.get(v);
 
         for (String s : path){
             System.out.print(s + (!s.equals(this.source) ? " -> " : "\n"));
         }
 
-        return distance;
+        return this.distanceTo.get(v);
     }
 }
