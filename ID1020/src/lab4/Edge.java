@@ -34,4 +34,9 @@ public class Edge<Item, Weight extends Comparable<Weight>> implements Comparable
     public int compareTo(Edge<Item, Weight> o) {
         return this.weight().compareTo(o.weight());
     }
+
+    @Override
+    public String toString() {
+        return this.v + " -> " + this.w + " (" + this.weight + ")";
+    }
 }
