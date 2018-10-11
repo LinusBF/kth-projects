@@ -1,5 +1,7 @@
 package lab4;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.Scanner;
 
 /**
@@ -23,9 +25,14 @@ public class DirectedGraph implements GenericGraph<String, String>{
 
     public Iterable<String> vertices() {return adj.keys();}
 
+    @Override
+    public Iterable<String> edges() {
+        throw new NotImplementedException();
+    }
+
     public int V() {return this.V;}
 
-    public int edges() {return this.E;}
+    public int E() {return this.E;}
 
     public void addEdge(String v, String w) {
         if(!this.adj.contains(v)){

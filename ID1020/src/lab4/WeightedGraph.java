@@ -31,7 +31,7 @@ public class WeightedGraph implements GenericGraph<String, Edge<String, Integer>
     }
 
     @Override
-    public int edges() {
+    public int E() {
         return E;
     }
 
@@ -56,5 +56,14 @@ public class WeightedGraph implements GenericGraph<String, Edge<String, Integer>
     @Override
     public Iterable<Edge<String, Integer>> adj(String v) {
         return this.adj.get(v);
+    }
+
+    public Iterable<Edge<String, Integer>> edges()
+    {
+        Bag<Edge<String, Integer>> b = new Bag<>();
+        for (String v : this.vertices())
+            for (Edge<String, Integer> e : adj.get(v))
+                if (!e.other(v).equals(v)) b.add(e);
+        return b;
     }
 }
