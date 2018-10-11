@@ -23,6 +23,16 @@ public class DirectedGraph implements GenericGraph<String, String>{
         }
     }
 
+    DirectedGraph (DirectedGraph G) {
+        this.V = 0;
+        this.E = 0;
+        this.adj = new ST<>();
+        for(String v : G.vertices()){
+            this.adj.put(v, new Bag<>());
+            this.V++;
+        }
+    }
+
     public Iterable<String> vertices() {return adj.keys();}
 
     @Override
@@ -48,6 +58,17 @@ public class DirectedGraph implements GenericGraph<String, String>{
 
         this.adj.get(v).add(w);
         this.E++;
+    }
+
+    public DirectedGraph reverse(){
+        DirectedGraph R = new DirectedGraph(this);
+        for(String v : R.vertices()){
+            for(String w : R.adj(v)){
+                R.addEdge(w, v);
+            }
+        }
+
+        return R;
     }
 
     public Iterable<String> adj(String v){

@@ -1,0 +1,74 @@
+Part 1 - Task 1:
+Going between New York and California
+NY -> PA -> WV -> KY -> MO -> OK -> NM -> AZ -> CA
+
+Part 1 - Task 2:
+Going between New York and California
+NY -> PA -> WV -> KY -> MO -> OK -> NM -> AZ -> CA
+
+Part 1 - Task 3:
+Going between Oklahoma and California
+OK -> CO -> NM -> AZ -> CA
+Distance in summed weight: 62
+
+Part 1 - Task 4:
+WV -> KY (61)
+KY -> IL (48)
+IL -> IA (35)
+IA -> MN (36)
+IA -> MO (37)
+MO -> AR (6)
+AR -> LA (5)
+AR -> MS (7)
+MS -> AL (3)
+AL -> FL (1)
+AL -> GA (2)
+AL -> TN (4)
+AR -> OK (8)
+AR -> TX (10)
+OK -> CO (20)
+CO -> KS (17)
+CO -> NE (18)
+CO -> NM (19)
+NM -> AZ (12)
+AZ -> CA (11)
+AZ -> NV (13)
+AZ -> UT (14)
+CA -> OR (16)
+CO -> WY (22)
+GA -> NC (32)
+GA -> SC (33)
+IA -> SD (39)
+IA -> WI (40)
+NV -> ID (42)
+ID -> MT (41)
+ID -> WA (45)
+IL -> IN (47)
+IN -> MI (52)
+IN -> OH (53)
+KY -> VA (60)
+VA -> DC (27)
+DC -> MD (26)
+MD -> DE (28)
+DE -> NJ (29)
+DE -> PA (30)
+MN -> ND (74)
+NJ -> NY (91)
+NY -> CT (24)
+CT -> MA (23)
+CT -> RI (25)
+MA -> NH (64)
+MA -> VT (67)
+NH -> ME (71)
+Total weight for MST: 1488
+
+Part 2 - Task 1:
+Going between Arizona and Washington (Path exists):
+WA -> OR -> NV -> AZ
+Found a path between AZ and WA
+
+Going between Arizona and Washington (Path does not exist):
+No path between NY and WA
+
+Part 2 - Task 3:
+TJ -> TK -> TL -> TM -> TI -> TH -> TG -> TD -> TC -> TA -> TB -> TF -> TE
