@@ -1,3 +1,8 @@
+/*
+* This class finds the shortest path in a graph using Breadth First Search
+*
+* */
+
 package lab4;
 
 import java.io.FileNotFoundException;

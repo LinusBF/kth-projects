@@ -1,3 +1,8 @@
+/*
+* This class sorts in topological order of a Directed Graph
+*
+* */
+
 package lab4;
 
 import java.io.FileNotFoundException;
@@ -16,7 +21,7 @@ public class Task7 {
         Topological top = new Topological(g);
 
         for(String e : top.order()){
-            System.out.print(e + " -> ");
+            System.out.print(e + "\n");
         }
     }
 }

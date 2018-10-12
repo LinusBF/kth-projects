@@ -1,3 +1,8 @@
+/*
+* This class finds the Minimal Spanning Tree in a graph starting from the "heaviest" Edge
+*
+* */
+
 package lab4;
 
 import java.io.FileNotFoundException;

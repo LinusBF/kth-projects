@@ -1,3 +1,8 @@
+/*
+* This class finds the shortest path in a graph with weighted edges using Depth First Search
+*
+* */
+
 package lab4;
 
 import java.io.FileNotFoundException;

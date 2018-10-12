@@ -1,3 +1,8 @@
+/*
+* This class finds the shortest path in a directed graph using Breadth First Search
+*
+* */
+
 package lab4;
 
 import java.io.FileNotFoundException;
@@ -16,6 +21,21 @@ public class Task5 {
         Scanner scan =  new Scanner(new FileReader(url.getPath()));
         DirectedGraph g = new DirectedGraph(scan);
         BFS bfs = new BFS(g, source);
+        BFS bfsTarget = new BFS(g, target);
+        Boolean pathFound = false;
+
+        pathFound = findPath(bfs, source, target);
+
+        if(!pathFound) {
+            pathFound = findPath(bfsTarget, target, source);
+        }
+
+        if(!pathFound){
+            System.out.println("No path between " + source + " and " + target);
+        }
+    }
+
+    static Boolean findPath(BFS bfs, String source, String target){
         Boolean pathFound = false;
         try {
             for (String s : bfs.pathTo(target)) {
@@ -23,8 +43,10 @@ public class Task5 {
                 System.out.print(s + (!s.equals(source) ? " -> " : "\n"));
             }
             System.out.println("Found a path between " + source + " and " + target);
-        } catch (NullPointerException e){
-            System.out.println("No path between " + source + " and " + target);
+        } catch (NullPointerException e) {
+            pathFound = false;
         }
+
+        return pathFound;
     }
 }
