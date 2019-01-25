@@ -5,14 +5,16 @@ defmodule Test do
     4 + 2
   end
 
-  def insert(x, l) do
-    case l do
-      [] ->
-        [x]
-      [h | t] when h < x ->
-        [h | insert(x, t)]
-      [h | t] ->
+  def insert(x, []) do
+    [x]
+  end
+
+  def insert(x, [h | t]) do
+    case x < h do
+      true ->
         [x | [h | t]]
+      false ->
+        [h | insert(x, t)]
     end
   end
 
@@ -20,18 +22,12 @@ defmodule Test do
     isort(l, [])
   end
 
-  def isort(list, sorted) do
-    case sorted do
-      [] ->
-        [h | t] = list
-        isort(t, [h])
-      [h | t] when h < list ->
-        [h2 | t2] = list
-        isort(t2, insert(h2, sorted))
-      [h | t] ->
-        [h2 | t2] = list
-        [h2 | isort(t2, sorted)]
-    end
+  def isort([], sorted) do
+    sorted
+  end
+
+  def isort([h | t], sorted) do
+    isort(t, insert(h, sorted))
   end
 
   def ack(m, n) do
