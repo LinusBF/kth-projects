@@ -8,22 +8,22 @@ defmodule Eager do
         {:ok, str}
     end
   end
-  def eval_expr({:cons, {t1_type, t1_val}, {t2_type, t2_val}}, env) do
-    case eval_expr({t1_type, t1_val}, env) do
+  def eval_expr({:cons, head, tail}, env) do
+    case eval_expr(head, env) do
       :error ->
         :error
       {:ok, str} ->
-        case eval_expr({t2_type, t2_val}, env) do
+        case eval_expr(tail, env) do
           :error ->
             :error
           {:ok, ts} ->
-            {str, ts}
+            {:ok, {str, ts}}
         end
     end
   end
 
-  def eval_match(:ignore, ..., ...) do
-    {:ok, ...}
+  def eval_match(:ignore, _, env) do
+    {:ok, env}
   end
   def eval_match({:atm, id}, id, env) do
     {:ok, env}
@@ -38,13 +38,16 @@ defmodule Eager do
         :fail
     end
   end
-  def eval_match({:cons, hp, tp}, {:cons, {:atm, hq}, tq}, env) do
-    case eval_match(hp, hq, env) do
+  def eval_match({:cons, [{:var , hp} | tp]}, {:cons, [{:atm, hq} | tq]}, env) do
+    case eval_match({:var, hp}, hq, env) do
       :fail ->
         :fail
       {:ok, new_env} ->
         eval_match({:cons, tp}, {:cons, tq}, new_env)
     end
+  end
+  def eval_match({:cons, []}, {:cons, []}, env) do
+    env
   end
   def eval_match(_, _, _) do
     :fail
