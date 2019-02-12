@@ -21,6 +21,6 @@ defmodule Mandel do
 
   def pixel(w, h, trans, d) do
     zDepth = Brot.mandelbrot(trans.(w, h), d)
-    Color.convert(zDepth, d)
+    Color.convert(zDepth, d, 20)
   end
 end
