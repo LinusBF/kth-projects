@@ -47,4 +47,13 @@ defmodule MandelBrotPPM do
     image = Mandel.mandelbrot(width, height, x0, y0, k, depth)
     PPM.write("huge.ppm", image)
   end
+
+  def custom(name, w, h, x0, y0, n, d) do
+    width = w
+    height = h
+    depth = d
+    k = n / width
+    image = Mandel.mandelbrot(width, height, x0, y0, k, depth)
+    PPM.write("custom-" <> name <> ".ppm", image)
+  end
 end
