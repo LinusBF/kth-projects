@@ -164,4 +164,24 @@ defmodule Tenta do
     end
   end
 
+  def foldp([n], _) do n end
+  def foldp(arr, op) do
+    self = self()
+    {l, r} = split(arr, [], []) # Initial solution used: Enum.split(arr, Kernel.trunc(length(arr)/2))
+    spawn(fn() -> n = foldp(l, op); send(self, n) end)
+    spawn(fn() -> n = foldp(r, op); send(self, n) end)
+    receive do
+      n1 ->
+        receive do
+          n2 -> op.(n1, n2)
+        end
+    end
+  end
+  def split([], l1, l2) do # From the exam solution
+    {l1,l2}
+  end
+  def split([h|t], l1, l2) do # From the exam solution
+    split(t, l2, [h|l1])
+  end
+
 end
