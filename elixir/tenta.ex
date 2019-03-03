@@ -111,32 +111,21 @@ defmodule Tenta do
     spawn(fn() -> dillinger(:nyc) end)
   end
   def dillinger(state) do # Initial Solution
+    if state == :nyc do
+      IO.puts("Hey Jim!")
+    end
     receive do
-      :knife ->
-        if state == :nyc do
-          dillinger(:knife)
-        else
-          dillinger(state)
-        end
-      :fork ->
-        if state == :knife do
-          dillinger(:fork)
-        else
-          dillinger(state)
-        end
-      :bottle ->
-        if state == :fork do
-          dillinger(:bottle)
-        else
-          dillinger(state)
-        end
-      :cork ->
-        if state == :bottle do
-          IO.puts("Hey Jim!")
-          dillinger(:nyc)
-        else
-          dillinger(state)
-        end
+      :knife -> dillinger(state, :nyc, :knife)
+      :fork -> dillinger(state, :knife, :fork)
+      :bottle -> dillinger(state, :fork, :bottle)
+      :cork -> dillinger(state, :bottle, :nyc)
+    end
+  end
+  def dillinger(state, correct, next) do
+    if state == correct do
+      dillinger(next)
+    else
+      dillinger(state)
     end
   end
   def betterDillinger() do
