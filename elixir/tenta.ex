@@ -19,8 +19,9 @@ defmodule Tenta do
     #add(15, tree)
     #sumTree = fn(a, b) -> a + b end
     #reduce(tree, 0, sumTree)
-    to_list = fn(res, n) -> List.flatten(res++[n]) end
-    reduce(tree, [], to_list)
+    #to_list = fn(res, n) -> List.flatten(res++[n]) end
+    #reduce(tree, [], to_list)
+    fairly(tree)
   end
 
   def double_even([h|t]) do
@@ -87,6 +88,22 @@ defmodule Tenta do
         receive do
           {:r, resR} -> op.(op.(resL, i), resR)
         end
+    end
+  end
+
+  def fairly(nil) do {:ok, 0} end
+  def fairly({:node, _, lt, rt}) do
+    case fairly(lt) do
+      {:ok, ld} ->
+        case fairly(rt) do
+          {:ok, rd} ->
+            cond do
+              abs(ld - rd) < 2 -> {:ok, max(ld, rd) + 1}
+              true -> :no
+            end
+          :no -> :no
+        end
+      :no -> :no
     end
   end
 
