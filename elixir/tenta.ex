@@ -170,7 +170,42 @@ defmodule Tenta do
     {l1,l2}
   end
   def split([h|t], l1, l2) do # From the exam solution
-    split(t, l2, [h|l1])
+    split(t, [h | l2], l1)
   end
+
+  def mergeSort([]) do [] end
+  def mergeSort([x]) do [x] end
+  def mergeSort(l) do
+    {l1, l2} = split(l, [], [])
+    sorted1 = mergeSort(l1)
+    sorted2 = mergeSort(l2)
+    merge(sorted1, sorted2)
+  end
+  def merge(l, []) do l end
+  def merge([], l) do l end
+  def merge([h1 | t1], [h2 | _] = l) when h1 < h2 do
+    [h1 | merge(t1, l)]
+  end
+  def merge(l, [h2 | t2]) do
+    [h2 | merge(t2, l)]
+  end
+
+  def quickSort([]) do [] end
+  def quickSort([x]) do [x] end
+  def quickSort(l) do
+    {l1, l2} = splitAtPivot(l)
+    quickSort(l1) ++ quickSort(l2)
+  end
+  def splitAtPivot([p | t]) do
+    splitAtPivot(p, t, [], [])
+  end
+  def splitAtPivot(p, [], low, high) do {low, [p | high]} end
+  def splitAtPivot(p, [h | t], low, high) when h < p do
+    splitAtPivot(p, t, [h | low], high)
+  end
+  def splitAtPivot(p, [h | t], low, high) do
+    splitAtPivot(p, t, low, [h | high])
+  end
+
 
 end
